@@ -2,8 +2,14 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var JudgeSchema = new Schema({
-  last_name: String,
-  first_name: String,
+  last_name: {
+    type: String,
+    required: true
+  },
+  first_name: {
+    type: Number,
+    required: true
+    },
   //TODO reconsider rookieYear possible years active Date.now since rookieYear
   rookieYear: String,
   fightsJudge: Number,
