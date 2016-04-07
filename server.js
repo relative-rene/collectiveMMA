@@ -4,10 +4,17 @@
 /////////////////////////////
 //  SETUP and CONFIGURATION
 /////////////////////////////
-var express = require('express');
-var db = require('./models');
-var app = express();
-var bodyParser = require('body-parser');
+
+var express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+
+    //  NEW ADDITIONS
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
@@ -15,7 +22,18 @@ app.use(express.static('public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(session({
+  secret: 'supersecretkey', // change this!
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 ////////////////////
 //  ROUTES
@@ -59,23 +77,23 @@ app.get('/api', function apiIndex(req,res){});
   {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},]
   });
 
-app.get('/api/books', function (req, res) {
-  // send all books as JSON response
-  db.Book.find().populate('author').exec(function(err, books) {
+app.get('/api/judges', function (req, res) {
+  // send all judges as JSON response
+  db.Book.find().populate('author').exec(function(err, judges) {
       if (err) { return console.log("index error: " + err); }
-      res.json(books);
+      res.json(judges);
   });
 });
 
 // get one book
-app.get('/api/books/:id', function (req, res) {
-  db.Books.findOne({_id: req.params._id }, function(err, data) {
+app.get('/api/judges/:id', function (req, res) {
+  db.judges.findOne({_id: req.params._id }, function(err, data) {
     res.json(data);
   });
 });
 
 // create new book
-app.post('/api/books', function (req, res) {
+app.post('/api/judges', function (req, res) {
   // create new book with form data (`req.body`)
   var newBook = new db.Book({
     title: req.body.title,
@@ -104,9 +122,9 @@ app.post('/api/books', function (req, res) {
 });
 
 // delete book
-app.delete('/api/books/:id', function (req, res) {
+app.delete('/api/judges/:id', function (req, res) {
   // get book id from url params (`req.params`)
-  console.log('books delete', req.params);
+  console.log('judges delete', req.params);
   var bookId = req.params.id;
   // find the index of the book we want to remove
   db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
