@@ -1,22 +1,16 @@
 // server.js
 // SERVER-SIDE JAVASCRIPT
 
-
 /////////////////////////////
 //  SETUP and CONFIGURATION
 /////////////////////////////
-
-//require express in our app
-var express = require('express'),
-  bodyParser = require('body-parser');
-
-// connect to db models
+var express = require('express');
 var db = require('./models');
-
-// generate a new express app and call it 'app'
 var app = express();
+var bodyParser = require('body-parser');
 
-// serve static files in public
+// Serve static files from the `/public` directory:
+// i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
 // body parser config to accept our datatypes
@@ -28,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 ///////////////////
 
 
+// Serve static files from the `/public` directory:
+// i.e. `/images`, `/scripts`, `/styles`
+
 
 
 // define a root route: localhost:3000/
@@ -35,7 +32,33 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-// get all books
+//JSON API Endpoints
+app.get('/api', function apiIndex(req,res){});
+  //TODO: Document all api Endpoints
+  res.json({
+    message: "Collective MMA api",
+    documentation_url:'investigate what documentation url is and update',
+    base_url: "https://github.com/relative-rene/project-01",// this may cause issues make sure the url is correct
+    endpoints: [
+  {method: "GET", path: "/api", description: "Describes all available endpoints"},
+  {method: "GET", path: "/api/fighters", description: "retrieves all fighters"},
+  {method: "GET", path: "/api/fighters/:id", description: "retrieves specific fighter"},
+  {method: "POST", path: "/api/fighters", description: "creating new fighter"},
+  {method: "DELETE", path: "/api/fighters/:id", description: "removing specific fighter"},
+  {method: "GET", path: "/api/refs", description: "retrieve all refs"},
+  {method: "GET", path: "/api/refs/:id", description: "retrieve specific ref"},
+  {method: "POST", path: "/api/refs", description: "creating new ref"},
+  {method: "DELETE", path: "/api/refs/:id", description: "remove specific ref"},
+  {method: "GET", path: "/api/users", description: "retrieve all users"},
+  {method: "GET", path: "/api/users/:id", description: "retrieve specific user"},
+  {method: "POST", path: "/api/users", description: "create new user"},
+  {method: "DELETE", path: "/api/users/:id", description: "remove specific user"},
+  {method: "GET", path: "/api/judges", description: "retrieve all judges"},
+  {method: "GET", path: "/api/judges/:id", description: "retrieve specific judge"},
+  {method: "POST", path: "/api/judges", description: "creating new judge"},
+  {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},]
+  });
+
 app.get('/api/books', function (req, res) {
   // send all books as JSON response
   db.Book.find().populate('author').exec(function(err, books) {
