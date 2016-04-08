@@ -22,18 +22,20 @@ app.use(express.static('public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(session({
-  secret: 'supersecretkey', // change this!
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// future authentication stuff
+// app.use(cookieParser());
+// app.use(session({
+//   secret: 'supersecretkey', // change this!
+//   resave: false,
+//   saveUninitialized: false
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// Authentication and Authorization stuff step hoover craft
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 ////////////////////
 //  ROUTES
@@ -51,7 +53,7 @@ app.get('/', function (req, res) {
 });
 
 //JSON API Endpoints
-app.get('/api', function apiIndex(req,res){});
+app.get('/api', function apiIndex(req,res) {
   //TODO: Document all api Endpoints
   res.json({
     message: "Collective MMA api",
@@ -76,6 +78,7 @@ app.get('/api', function apiIndex(req,res){});
   {method: "POST", path: "/api/judges", description: "creating new judge"},
   {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},]
   });
+});
 
 app.get('/api/judges', function (req, res) {
   // send all judges as JSON response
