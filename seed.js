@@ -1,5 +1,5 @@
 
-var fighters = {[
+var fighters = [
 {
 id: 1177,
 wins: 18,
@@ -375,9 +375,10 @@ statid: 2240,
 losses: 3,
 last_name: "Moras",
 weight_class: "Women_Bantamweight",
-title_holder: false,z
+title_holder: false,
 draws: 0,
 first_name: "Sarah",
 fighter_status: "Active",
 thumbnail: "http://imagec.ufc.com/http%253A%252F%252Fmedia.ufc.tv%252Fgenerated_images_sorted%252FFighter%252FSarah-Moras%252FSarah-Moras_453503_medium_thumbnail.jpg?-mw300-mh300-tc1"
 }
+];

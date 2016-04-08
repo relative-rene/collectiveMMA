@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sf-wdi-27-28/project-01#readme",
   "dependencies": {
     "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
     "express-session": "^1.13.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
