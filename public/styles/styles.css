@@ -3,4 +3,6 @@ h1{
   z-index: -1;
 }
 body{
+  background-image: no-repeat;
+  background-position: center;
 }
