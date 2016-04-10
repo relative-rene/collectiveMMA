@@ -3,7 +3,12 @@ var template;
 
 $(document).ready(function(){
 
-
+$('#score-card-form').on('submit', function(event) {
+  alert('ScoreCard submit clicked');
+  console.log(event);
+  event.preventDefault();
+  var formData= $('formData')
+});
 
 
 
