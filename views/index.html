@@ -19,7 +19,10 @@
     <script src="scripts/app.js"></script>
   </head>
   <body>
-    <div class="jumbotron">Silence is Consensus</div>
+    <div class="jumbotron">
+      <h1 class='text-center'>Collective MMA</h1>
+      <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=0ahUKEwipiMyf44TMAhVR4WMKHTbZAmkQjRwIBw&url=http%3A%2F%2Fwww.ebay.com%2Fitm%2FEvolution-of-Man-to-Boxer-Decal-Sticker-Boxing-Ring-Fighter-UFC-MMA-FREE-S-H-%2F251312296201&psig=AFQjCNHnuU7om58tCj79UAbKTVy_AwykVg&ust=1460401921535052">
+    </div>
 
     <section id='score-card-form' class="container">
       <div class="row">
@@ -38,19 +41,19 @@
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="effectiveStriking" id="ESradio" value="option2">
+              <input type="radio" name="EffectiveStriking1" id="ESradio" value="option2">
               Effective Striking
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="effectiveGrappling" id="EGradio" value="option2">
+              <input type="radio" name="EffectiveGrappling1" id="EGradio" value="option2">
               Effective Grappling
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="OctagonControl" id="OCradio" value="option2">
+              <input type="radio" name="OctagonControl1" id="OCradio" value="option2">
               Octagon Control
             </label>
           </div>
@@ -71,26 +74,298 @@
             </div>
           <div class="radio">
             <label>
-              <input type="radio" name="EffectiveStriking" id="ESradio" value="option2">
+              <input type="radio" name="EffectiveStriking1" id="ESradio" value="option2">
               Effective Striking
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="EffectiveGrappling" id="EGradio" value="option2">
+              <input type="radio" name="EffectiveGrappling1" id="EGradio" value="option2">
               Effective Grappling
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="OctagonControl" id="OCradio" value="option2">
+              <input type="radio" name="OctagonControl1" id="OCradio" value="option2">
               Octagon Control
             </label>
           </div>
           <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-      <button type="submit" class="btn btn-default pull-right">Submit</button>
-    </div>
-    </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-6 col-xs-6">
+          <form class="form-horizontal" id='left-sc-form'>Fighter 1</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Score: <span class="selection">Round 2</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">10</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">7</a></li>
+            </ul>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking2" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling2" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl2" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+        </div>
+        <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+        <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Score: <span class="selection">Round 2</span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">10</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">7</a></li>
+              </ul>
+            </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking2" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling2" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl2" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-6 col-xs-6">
+          <form class="form-horizontal" id='left-sc-form'>Fighter 1</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Score: <span class="selection">Round 3</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">10</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">7</a></li>
+            </ul>
+          </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="EffectiveStriking3" id="ESradio" value="option2">
+            Effective Striking
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="EffectiveGrappling3" id="EGradio" value="option2">
+            Effective Grappling
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="OctagonControl3" id="OCradio" value="option2">
+            Octagon Control
+          </label>
+        </div>
+        <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+      </div>
+      <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+      <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Score: <span class="selection">Round 3</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">10</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">7</a></li>
+            </ul>
+          </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="EffectiveStriking3" id="ESradio" value="option2">
+            Effective Striking
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="EffectiveGrappling3" id="EGradio" value="option2">
+            Effective Grappling
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="OctagonControl3" id="OCradio" value="option2">
+            Octagon Control
+          </label>
+        </div>
+        <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-6 col-xs-6">
+          <form class="form-horizontal" id='left-sc-form'>Fighter 1</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Score: <span class="selection">Round 4</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">10</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">7</a></li>
+            </ul>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking4" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling4" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl4" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+        </div>
+        <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+        <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Score: <span class="selection">Round 4</span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">10</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">7</a></li>
+              </ul>
+            </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking4" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling4" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl4" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-6 col-xs-6">
+          <form class="form-horizontal" id='left-sc-form'>Fighter 1</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Score: <span class="selection">Round 5</span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">10</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">7</a></li>
+            </ul>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking5" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling5" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl5" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+        </div>
+        <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+        <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Score: <span class="selection">Round 5</span><span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">10</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">7</a></li>
+              </ul>
+            </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveStriking5" id="ESradio" value="option2">
+              Effective Striking
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="EffectiveGrappling5" id="EGradio" value="option2">
+              Effective Grappling
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="OctagonControl5" id="OCradio" value="option2">
+              Octagon Control
+            </label>
+          </div>
+          <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
+        <button type="submit" class="btn btn-default pull-right">Submit</button>
+        </div>
+        </div>
     </section>
   </body>
 </html>

@@ -5,21 +5,21 @@
 
 var db = require('../models');
 
-// GET /api/albums
+// GET /api/Referees
 function index(req, res) {
-db.Album.find({}, function(err, allAlbums){
-  res.json(allAlbums);
+db.Referee.find({}, function(err, allReferees){
+  res.json(allReferees);
 });
 }
 
 function create(req, res) {
 console.log('body',req.body);
 var newSong = req.body;
-//save and return the new album object
-db.Album.create( newSong, function saveNewAlbum(err, savedNewAlbum) {
+//save and return the new Referee object
+db.Referee.create( newSong, function saveNewReferee(err, savedNewReferee) {
     //TODO:  run a check for err
-    console.log("SUCCESFULLY SAVED A NEW ALBUM: " , savedNewAlbum);
-  res.json(savedNewAlbum);
+    console.log("SUCCESFULLY SAVED A NEW Referee: " , savedNewReferee);
+  res.json(savedNewReferee);
 });
 }
 

@@ -4,21 +4,21 @@
 //FIXME this page is an outline
 var db = require('../models');
 
-// GET /api/albums
+// GET /api/Users
 function index(req, res) {
-db.Album.find({}, function(err, allAlbums){
-  res.json(allAlbums);
+db.User.find({}, function(err, allUsers){
+  res.json(allUsers);
 });
 }
 
 function create(req, res) {
 console.log('body',req.body);
 var newSong = req.body;
-//save and return the new album object
-db.Album.create( newSong, function saveNewAlbum(err, savedNewAlbum) {
+//save and return the new User object
+db.User.create( newSong, function saveNewUser(err, savedNewUser) {
     //TODO:  run a check for err
-    console.log("SUCCESFULLY SAVED A NEW ALBUM: " , savedNewAlbum);
-  res.json(savedNewAlbum);
+    console.log("SUCCESFULLY SAVED A NEW User: " , savedNewUser);
+  res.json(savedNewUser);
 });
 }
 
