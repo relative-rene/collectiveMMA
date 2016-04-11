@@ -22,6 +22,20 @@
     <div class="jumbotron">
       <h1 class='text-center'>Collective MMA</h1>
     </div>
+    <div id="fight-Selection" class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-5">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="selection">Fight</span><span class="caret"></span></button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Glover Teixeira vs Rashad Evans</a></li>
+                <li><a href="#">Lyoto Machida vs Dan Henderson</a></li>
+                <li><a href="#">Khabib Nurmagomedov vs Darrell Horcher</a></li>
+                <li><a href="#">Rose Namajunas vs Tecia Torres</a></li>
+              </ul>
+        </div>
+      </div>
+    </div>
     <section id='score-card-form' class="container">
       <div class="row">
         <div class="col-md-5 col-sm-6 col-xs-6">
@@ -58,17 +72,17 @@
           <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
         </div>
         <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
-        <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
-            <div class="btn-group">
-              <button type="button" class="btn btn-primary dropdown-toggle fighter2" data-toggle="dropdown">
-                Score: <span class="selection">Round 1</span><span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">10</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">7</a></li>
-              </ul>
+          <form class="form-horizontal" id='right-sc-form'>Fighter 2</form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle fighter2" data-toggle="dropdown">
+                  Score: <span class="selection">Round 1</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">10</a></li>
+                  <li><a href="#">9</a></li>
+                  <li><a href="#">8</a></li>
+                  <li><a href="#">7</a></li>
+                </ul>
             </div>
           <div class="radio">
             <label>
@@ -89,7 +103,6 @@
             </label>
           </div>
           <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-          <button type="submit" class="btn btn-default pull-right">Submit</button>
       </div>
       </div>
       <div class="row">
@@ -158,7 +171,6 @@
             </label>
           </div>
         <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-        <button type="submit" class="btn btn-default pull-right">Submit</button>
       </div>
       </div>
       <div class="row">
@@ -227,7 +239,6 @@
           </label>
         </div>
         <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-        <button type="submit" class="btn btn-default pull-right">Submit</button>
       </div>
       </div>
       <div class="row">
@@ -296,7 +307,6 @@
             </label>
           </div>
           <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-          <button type="submit" class="btn btn-default pull-right">Submit</button>
       </div>
       </div>
       <div class="row">
@@ -365,7 +375,7 @@
             </label>
           </div>
           <textarea class="form-control" rows="2" placeholder="Round Highlight"></textarea>
-        <button type="submit" class="btn btn-default pull-right">Submit</button>
+        <button type="submit" id='Submit-total' class="btn btn-default pull-right">Submit</button>
         <div id="total"> </div>
         </div>
         </div>
