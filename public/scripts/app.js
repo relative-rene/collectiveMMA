@@ -4,32 +4,28 @@ var template;
 $(document).ready(function(){
   $('#Submit-total').on('click',function(){
     var fighter1Total = 0, fighter2Total = 0;
-    var fighter1 = $('.fighter1').each(function(roundScore) {
-        console.log('fighter1', roundScore);
-        fighter1Total += roundScore;
+    var fighter1 = $('.fighter1').each(function(index,fighter1button) {
+        console.log('fighter1 total',fighter1Total);
+        fighter1Total += fighter1button;
         console.log('fighter1total',fighter1Total);
       });
-    var fighter2 = $('.fighter2').each(function(roundScore) {
-        console.log(fighter2);
-        fighter2Total += roundScore;
+    var fighter2 = $('.fighter2').each(function(index, fighter2button) {
+        console.log('fighter2button',fighter2button);
+        fighter2Total += fighter2button;
         console.log('fighter2total',fighter2Total);
     });
   });
 
 
-});
+
 // event Listener function
   $(".dropdown-menu li a").click(function(event){
-    // $(this).parents(".btn-group").find('.selection').text($(this).text());
-    var linkText= $(this).text();
-    $(this).parents(".btn-group").find('.selection').text(linkText);
-    // $(this).parents(".btn-group").find('.selection').text($(this).text());
-    // $(this).parents(".btn-group").find('.selection').val($(this).text());
+    var $linkText= $(this).text();
+    $(this).parents(".btn-group").find('.selection').text($linkText);
     console.log(this);
     event.preventDefault();
-    rounds++;
 });
-
+});
 
 
 
