@@ -14,9 +14,9 @@ db.Fighter.find({}, function(err, allFighters){
 
 function create(req, res) {
 console.log('body',req.body);
-var newSong = req.body;
+var newFighter = req.body;
 //save and return the new Fighter object
-db.Fighter.create( newSong, function saveNewFighter(err, savedNewFighter) {
+db.Fighter.create( newFighter, function saveNewFighter(err, savedNewFighter) {
     //TODO:  run a check for err
     console.log("SUCCESFULLY SAVED A NEW Fighter: " , savedNewFighter);
   res.json(savedNewFighter);
