@@ -49,15 +49,15 @@ $('#Submit-total').on('click',function(){
 });
 
 
-// function fighterDisplay(){
-//   $.ajax({
-//     url:'http://ufc-data-api.ufc.com/api/v1/us/fighters',
-//     method: 'POST',
-//     success:
-//     error:function(err){
-//       console.log(err)
-//     }
-//   });
+function fighterDisplay(){
+  $.ajax({
+    url:'http://ufc-data-api.ufc.com/api/v1/us/fighters',
+    method: 'POST',
+    success:
+    error:function(err){
+      console.log(err)
+    }
+  });
 
 
 // function fighter1Score(){
