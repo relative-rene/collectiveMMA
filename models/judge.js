@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var JudgeSchema = new Schema({
+var judgeSchema = new Schema({
   last_name: {
     type: String,
     required: true
@@ -17,5 +17,5 @@ var JudgeSchema = new Schema({
   highlights: String,// major bouts
   hometown: String,// possibly current City
 });
-var Judge = mongoose.model('Judge', JudgeSchema);
+var Judge = mongoose.model('Judge', judgeSchema);
 module.exports = Judge;

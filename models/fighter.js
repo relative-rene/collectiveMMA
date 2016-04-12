@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 //TODO reconsider schema depending on external API fight-matrix or ufc.data.api
-var FighterSchema = new Schema({
+var fighterSchema = new Schema({
   wins: {
     type: Number,
     required: true
@@ -23,5 +23,5 @@ var FighterSchema = new Schema({
   rookieYear: String
 });
 
-var Fighter = mongoose.model('Fighter', FighterSchema);
+var Fighter = mongoose.model('Fighter', fighterSchema);
 module.exports = Fighter;

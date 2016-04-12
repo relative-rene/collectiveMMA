@@ -19,11 +19,5 @@ var scoreCardSchema = new Schema ({
     ref: 'Fighter'
   }
 });
-
-
-
-
-
-
-
-var
+var ScoreCard = mongoose.model('ScoreCard', scoreCardSchema);
+module.exports = ScoreCard;

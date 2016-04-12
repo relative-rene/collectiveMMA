@@ -65,22 +65,27 @@ app.get('/api', function apiIndex(req,res) {
   {method: "GET", path: "/api/fighters/:id", description: "retrieves specific fighter"},
   {method: "POST", path: "/api/fighters", description: "creating new fighter"},
   {method: "DELETE", path: "/api/fighters/:id", description: "removing specific fighter"},
-  {method: "GET", path: "/api/refs", description: "retrieve all refs"},
-  {method: "GET", path: "/api/refs/:id", description: "retrieve specific ref"},
-  {method: "POST", path: "/api/refs", description: "creating new ref"},
-  {method: "DELETE", path: "/api/refs/:id", description: "remove specific ref"},
-  {method: "GET", path: "/api/users", description: "retrieve all users"},
-  {method: "GET", path: "/api/users/:id", description: "retrieve specific user"},
-  {method: "POST", path: "/api/users", description: "create new user"},
-  {method: "DELETE", path: "/api/users/:id", description: "remove specific user"},
-  {method: "GET", path: "/api/judges", description: "retrieve all judges"},
-  {method: "GET", path: "/api/judges/:id", description: "retrieve specific judge"},
-  {method: "POST", path: "/api/judges", description: "creating new judge"},
-  {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},]
+  {method: "GET", path: "/api/scoreCards", description: "retrieve all scoreCards"},
+  {method: "GET", path: "/api/scoreCards/:id", description: "retrieve specific scoreCard"},
+  {method: "POST", path: "/api/scoreCards", description: "creating new scoreCard"},
+  {method: "DELETE", path: "/api/scoreCards/:id", description: "remove specific scoreCard"},
+  // {method: "GET", path: "/api/users", description: "retrieve all users"},
+  // {method: "GET", path: "/api/users/:id", description: "retrieve specific user"},
+  // {method: "POST", path: "/api/users", description: "create new user"},
+  // {method: "DELETE", path: "/api/users/:id", description: "remove specific user"},
+  // {method: "GET", path: "/api/judges", description: "retrieve all judges"},
+  // {method: "GET", path: "/api/judges/:id", description: "retrieve specific judge"},
+  // {method: "POST", path: "/api/judges", description: "creating new judge"},
+  // {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},
+]
   });
 });
 
-app.get('/api/judges', function (req, res) {
+app.get('/', function (req, res) {
+  res.sendFile('views/index.html' , { root : __dirname});
+});
+
+app.get('/api/scoreCards', function (req, res) {
   // send all judges as JSON response
   db.Book.find().populate('author').exec(function(err, judges) {
       if (err) { return console.log("index error: " + err); }
@@ -89,34 +94,46 @@ app.get('/api/judges', function (req, res) {
 });
 
 // get one book
-app.get('/api/judges/:id', function (req, res) {
+app.get('/api/scoreCards/:id', function (req, res) {
   db.judges.findOne({_id: req.params._id }, function(err, data) {
     res.json(data);
   });
 });
+// delete book
+app.delete('/api/scoreCards/:id', function (req, res) {
+  // get book id from url params (`req.params`)
+  console.log('scoreCards delete', req.params);
+  var bookId = req.params.id;
+  // find the index of the book we want to remove
+  db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
+    res.json(deletedBook);
+  });
+});
+
 
 // create new book
-app.post('/api/judges', function (req, res) {
+app.post('/api/scoreCards', function (req, res) {
   // create new book with form data (`req.body`)
   var newBook = new db.Book({
     title: req.body.title,
     image: req.body.image,
     releaseDate: req.body.releaseDate,
   });
-  // find the author from req.body
-  db.Author.findOne({name: req.body.author}, function(err, author){
+
+// find the author from req.body
+db.Author.findOne({name: req.body.author}, function(err, author){
+  if (err) {
+    return console.log(err);
+  }
+  // add this author to the book
+  newBook.author = author;
+
+
+  // save newBook to database
+  newBook.save(function(err, book){
     if (err) {
-      return console.log(err);
+      return console.log("save error: " + err);
     }
-    // add this author to the book
-    newBook.author = author;
-
-
-    // save newBook to database
-    newBook.save(function(err, book){
-      if (err) {
-        return console.log("save error: " + err);
-      }
       console.log("saved ", book.title);
       // send back the book!
       res.json(book);
@@ -124,16 +141,6 @@ app.post('/api/judges', function (req, res) {
   });
 });
 
-// delete book
-app.delete('/api/judges/:id', function (req, res) {
-  // get book id from url params (`req.params`)
-  console.log('judges delete', req.params);
-  var bookId = req.params.id;
-  // find the index of the book we want to remove
-  db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
-    res.json(deletedBook);
-  });
-});
 
 
 
