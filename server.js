@@ -81,68 +81,96 @@ app.get('/api', function apiIndex(req,res) {
   });
 });
 
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html' , { root : __dirname});
-});
-
+//get all scoreCards
 app.get('/api/scoreCards', function (req, res) {
-  // send all judges as JSON response
-  db.Book.find().populate('author').exec(function(err, judges) {
+  // send all scoreCards as JSON response
+  db.ScoreCard.find().populate('ScoreCard').exec(function(err, scoreCard) {
       if (err) { return console.log("index error: " + err); }
-      res.json(judges);
+      res.json(scoreCard);
   });
 });
 
-// get one book
+// get one scoreCard
 app.get('/api/scoreCards/:id', function (req, res) {
-  db.judges.findOne({_id: req.params._id }, function(err, data) {
+  db.ScoreCard.findOne({_id: req.params._id }, function(err, data) {
     res.json(data);
   });
 });
-// delete book
+
+// delete scoreCard
 app.delete('/api/scoreCards/:id', function (req, res) {
-  // get book id from url params (`req.params`)
+  // get scoreCard id from url params (`req.params`)
   console.log('scoreCards delete', req.params);
-  var bookId = req.params.id;
-  // find the index of the book we want to remove
-  db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
-    res.json(deletedBook);
+  var scoreCardId = req.params.id;
+  // find the index of the scoreCard we want to remove
+  db.ScoreCard.findOneAndRemove({ _id: scoreCardId }, function (err, scoreCard) {
+    res.json(scoreCard);
   });
 });
-
 
 // create new book
 app.post('/api/scoreCards', function (req, res) {
   // create new book with form data (`req.body`)
-  var newBook = new db.Book({
+  var newScoreCard = new db.ScoreCard({
     title: req.body.title,
     image: req.body.image,
     releaseDate: req.body.releaseDate,
   });
 
 // find the author from req.body
-db.Author.findOne({name: req.body.author}, function(err, author){
+db.Fighter.findOne({name: req.body.fighter}, function(err, fighter){
   if (err) {
     return console.log(err);
   }
   // add this author to the book
-  newBook.author = author;
-
+  newScoreCard.fighter = fighter;
 
   // save newBook to database
-  newBook.save(function(err, book){
+  newScoreCard.save(function(err, scoreCard){
     if (err) {
       return console.log("save error: " + err);
     }
-      console.log("saved ", book.title);
+      console.log("saved ", scoreCard.title);
       // send back the book!
-      res.json(book);
+      res.json(scoreCard);
     });
   });
 });
 
+app.get('/api/fighters/:id', function (req, res) {
+  db.Fighter.findOne({_id: req.params._id }, function(err, data) {
+    res.json(data);
+  });
+});
 
+// create new fighter
+app.post('/api/fighters', function (req, res) {
+  // create new book with form data (`req.body`)
+  var newFighter = new db.Fighter({
+    title: req.body.title,
+    image: req.body.image,
+    releaseDate: req.body.releaseDate,
+  });
 
+// find the author from req.body
+db.ScoreCard.findOne({name: req.body.scorecard}, function(err, scorecard){
+  if (err) {
+    return console.log(err);
+  }
+  // add this author to the book
+  newFighter.scorecard = scorecard;
+
+  // save newBook to database
+  newFighter.save(function(err, fighter){
+    if (err) {
+      return console.log("save error: " + err);
+    }
+      console.log("saved ", fighter.title);
+      // send back the book!
+      res.json(fighter);
+    });
+  });
+});
 
 
 app.listen(process.env.PORT || 3000, function () {
