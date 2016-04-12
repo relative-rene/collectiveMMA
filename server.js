@@ -112,27 +112,30 @@ app.delete('/api/scoreCards/:id', function (req, res) {
 app.post('/api/scoreCards', function (req, res) {
   // create new book with form data (`req.body`)
   var newScoreCard = new db.ScoreCard({
-    title: req.body.title,
-    image: req.body.image,
-    releaseDate: req.body.releaseDate,
+    fighter1: req.body.fighter1,
+    fighter2: req.body.fighter2,
+    fighter1Score: req.body.fighter1Score,
+    fighter2Score: req.body.fighter2Score,
   });
 
 // find the author from req.body
-db.Fighter.findOne({name: req.body.fighter}, function(err, fighter){
+db.Fighter.findOne({first_name: req.body.fighter}, function(err, foundFighter){
   if (err) {
+    res.status(500).send(err);
     return console.log(err);
   }
   // add this author to the book
   newScoreCard.fighter = fighter;
 
   // save newBook to database
-  newScoreCard.save(function(err, scoreCard){
+  newScoreCard.save(function(err, savedScoreCard){
     if (err) {
+      res.status(500).send(err);
       return console.log("save error: " + err);
     }
       console.log("saved ", scoreCard.title);
       // send back the book!
-      res.json(scoreCard);
+      res.json(savedScoreCard);
     });
   });
 });
@@ -147,9 +150,16 @@ app.get('/api/fighters/:id', function (req, res) {
 app.post('/api/fighters', function (req, res) {
   // create new book with form data (`req.body`)
   var newFighter = new db.Fighter({
-    title: req.body.title,
-    image: req.body.image,
-    releaseDate: req.body.releaseDate,
+    first_name: {
+      type: String,
+      required:true
+    },
+    last_name:String,
+    wins: req.body.wins,
+    losses: req.body.losses,
+    draws: req.body.draws,
+    weight_class: [],
+    rookieYear: req.body.proDebut
   });
 
 // find the author from req.body

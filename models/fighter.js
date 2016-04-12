@@ -11,12 +11,13 @@ var fighterSchema = new Schema({
     type: Number,
     required: true
   },
+  draws: Number,
   last_name: {
     type: String,
     required: true
   },
   first_name: {
-    type: Number,
+    type: String,
     required: true
     },
   weight_class: [String],
