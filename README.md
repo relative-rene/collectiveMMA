@@ -37,3 +37,10 @@ app.get('/api', function apiIndex(req,res) {
 ]
   });
 });  
+
+I am most proud of:
+$(".dropdown-menu li a").click(function(event) {
+    var $linkText= $(this).text();
+    $(this).parents(".btn-group").find('.selection').text($linkText);
+    event.preventDefault();
+});

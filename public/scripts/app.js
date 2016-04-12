@@ -20,6 +20,7 @@ $('#Submit-total').on('click',function(){
 
     fighter2Total = f2round5+f2round4+f2round3+f2round2+f2round1;
     console.log('fighter2 '+ fighter2Total,'fighter1 '+ fighter1Total);
+    $('#total').html("<h1>"+'fighter 2: '+ fighter2Total+'fighter 1: '+fighter1Total+"</h1>");
     return fighter2Total + fighter1Total;
 });
 
@@ -48,7 +49,7 @@ $('#Submit-total').on('click',function(){
 
 });
 
-
+$('#total').html("<h3>"+'fighter 2'+ fighter2total+'fighter 1'+"</h3>");
 // function fighterDisplay(){
 //   $.ajax({
 //     url:'http://ufc-data-api.ufc.com/api/v1/us/fighters',
