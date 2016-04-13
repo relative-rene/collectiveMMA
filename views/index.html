@@ -177,7 +177,7 @@
 
                         <li class="list-group-item">
                           <h4 class="inline-header">Songs:</h4>
-                          <span>&ndash; {{#each songs}} ({{trackNumber}}) {{name}} &ndash;  {{/each}}</span>
+                          <span>&ndash; {{#each events}} ({{trackNumber}}) {{name}} &ndash;  {{/each}}</span>
                         </li>
 
                       </ul>
@@ -272,11 +272,11 @@
 
     <!-- template for editing / deleting a prediction -->
     <script id='prediction-edit-template' type='text/x-handlebars-template'>
-      {{#each songs}}
-      <!-- confused by ../albumId ?  See:
+      {{#each events}}
+      <!-- confused by ../fighterId ?  See:
       http://stackoverflow.com/questions/12297959/access-properties-of-the-parent-with-a-handlebars-each-loop#12297980
       -->
-      <form class="form-inline" id="{{_id}}" data-fighter-id="{{../albumId}}" >
+      <form class="form-inline" id="{{_id}}" data-fighter-id="{{../fighterId}}" >
         <div class="form-group">
           <input type="text" class="form-control prediction-trackNumber" value="{{trackNumber}}">
         </div>
