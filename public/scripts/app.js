@@ -2,6 +2,45 @@ console.log('Sanity Check: js is working');
 var template;
 
 $(document).ready(function(){
+$('')
+
+function handleNewSongSubmit(e) {
+  e.preventDefault();
+  var $modal = $('#songModal');
+  var $songNameField = $modal.find('#songName');
+  var $trackNumberField = $modal.find('#trackNumber');
+
+  // get data from modal fields
+  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+  var dataToPost = {
+    name: $songNameField.val(),
+    trackNumber: $trackNumberField.val()
+  };
+  var albumId = $modal.data('albumId');
+  console.log('retrieved songName:', songName, ' and trackNumber:', trackNumber, ' for fighter w/ id: ', albumId);
+  // POST to SERVER
+  var songPostToServerUrl = '/api/albums/'+ albumId + '/songs';
+  $.post(songPostToServerUrl, dataToPost, function(data) {
+    console.log('received data from post to /songs:', data);
+    // clear form
+    $songNameField.val('');
+    $trackNumberField.val('');
+
+    // close modal
+    $modal.modal('hide');
+    // update the correct fighter to show the new song
+    $.get('/api/albums/' + albumId, function(data) {
+      // remove the current instance of the fighter from the page
+      $('[data-fighter-id=' + albumId + ']').remove();
+      // re-render it with the new fighter data (including songs)
+      renderAlbum(data);
+    });
+  }).error(function(err) {
+    console.log('post to /api/albums/:albumId/songs resulted in error', err);
+  });
+}
+
+
 $("li .fighterCreate").click(function(){
   $.ajax({
     url:".kdjasfkl;",
