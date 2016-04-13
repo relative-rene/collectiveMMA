@@ -2,7 +2,16 @@ console.log('Sanity Check: js is working');
 var template;
 
 $(document).ready(function(){
-
+$("li .fighterCreate").click(function(){
+  $.ajax({
+    url:".kdjasfkl;",
+    method:"POST",
+    success:createFighter,
+    error:function(event){
+      console.log('fighter create not working',event);
+    }
+  });
+});
 $('#Submit-total').on('click',function(){
     var fighter1Total, fighter2Total;
     var f1round1 = parseInt($('#F1R1').html());
