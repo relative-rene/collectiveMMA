@@ -61,14 +61,14 @@ app.get('/api', function apiIndex(req,res) {
     base_url: "https://github.com/relative-rene/project-01",// this may cause issues make sure the url is correct
     endpoints: [
   {method: "GET", path: "/api", description: "Describes all available endpoints"},
-  {method: "GET", path: "/api/fighters", description: "retrieves all fighters"},
-  {method: "GET", path: "/api/fighters/:id", description: "retrieves specific fighter"},
+  {method: "GET", path: "/api/events", description: "retrieves all events"},
+  {method: "GET", path: "/api/events/:id", description: "retrieves specific event"},
+  {method: "POST", path: "/api/events", description: "creating new event"},
+  {method: "DELETE", path: "/api/events/:id", description: "removing specific event"},
+  {method: "GET", path: "/api/fighters", description: "retrieve all fighters"},
+  {method: "GET", path: "/api/fighters/:id", description: "retrieve specific fighter"},
   {method: "POST", path: "/api/fighters", description: "creating new fighter"},
-  {method: "DELETE", path: "/api/fighters/:id", description: "removing specific fighter"},
-  {method: "GET", path: "/api/scoreCards", description: "retrieve all scoreCards"},
-  {method: "GET", path: "/api/scoreCards/:id", description: "retrieve specific scoreCard"},
-  {method: "POST", path: "/api/scoreCards", description: "creating new scoreCard"},
-  {method: "DELETE", path: "/api/scoreCards/:id", description: "remove specific scoreCard"},
+  {method: "DELETE", path: "/api/fighters/:id", description: "remove specific fighter"},
   // {method: "GET", path: "/api/users", description: "retrieve all users"},
   // {method: "GET", path: "/api/users/:id", description: "retrieve specific user"},
   // {method: "POST", path: "/api/users", description: "create new user"},
@@ -81,51 +81,51 @@ app.get('/api', function apiIndex(req,res) {
   });
 });
 
-//get all scoreCards
-app.get('/api/scoreCards', function (req, res) {
-  // send all scoreCards as JSON response
-  db.ScoreCard.find().populate('ScoreCard').exec(function(err, scoreCard) {
+//get all fighters
+app.get('/api/fighters', function (req, res) {
+  // send all fighters as JSON response
+  db.ScoreCard.find().populate('ScoreCard').exec(function(err, fighter) {
       if (err) { return console.log("index error: " + err); }
-      res.json(scoreCard);
+      res.json(fighter);
   });
 });
 
-// get one scoreCard
-app.get('/api/scoreCards/:id', function (req, res) {
+// get one fighter
+app.get('/api/fighters/:id', function (req, res) {
   db.ScoreCard.findOne({_id: req.params._id }, function(err, data) {
     res.json(data);
   });
 });
 
-// delete scoreCard
-app.delete('/api/scoreCards/:id', function (req, res) {
-  // get scoreCard id from url params (`req.params`)
-  console.log('scoreCards delete', req.params);
-  var scoreCardId = req.params.id;
-  // find the index of the scoreCard we want to remove
-  db.ScoreCard.findOneAndRemove({ _id: scoreCardId }, function (err, scoreCard) {
-    res.json(scoreCard);
+// delete fighter
+app.delete('/api/fighters/:id', function (req, res) {
+  // get fighter id from url params (`req.params`)
+  console.log('fighters delete', req.params);
+  var fighterId = req.params.id;
+  // find the index of the fighter we want to remove
+  db.ScoreCard.findOneAndRemove({ _id: fighterId }, function (err, fighter) {
+    res.json(fighter);
   });
 });
 
 // create new book
-app.post('/api/scoreCards', function (req, res) {
+app.post('/api/fighters', function (req, res) {
   // create new book with form data (`req.body`)
   var newScoreCard = new db.ScoreCard({
-    fighter1: req.body.fighter1,
-    fighter2: req.body.fighter2,
-    fighter1Score: req.body.fighter1Score,
-    fighter2Score: req.body.fighter2Score,
+    event1: req.body.event1,
+    event2: req.body.event2,
+    event1Score: req.body.event1Score,
+    event2Score: req.body.event2Score,
   });
 
 // find the author from req.body
-db.Fighter.findOne({first_name: req.body.fighter}, function(err, foundFighter){
+db.Fighter.findOne({first_name: req.body.event}, function(err, foundFighter){
   if (err) {
     res.status(500).send(err);
     return console.log(err);
   }
   // add this author to the book
-  newScoreCard.fighter = fighter;
+  newScoreCard.event = event;
 
   // save newBook to database
   newScoreCard.save(function(err, savedScoreCard){
@@ -133,21 +133,21 @@ db.Fighter.findOne({first_name: req.body.fighter}, function(err, foundFighter){
       res.status(500).send(err);
       return console.log("save error: " + err);
     }
-      console.log("saved ", scoreCard.title);
+      console.log("saved ", fighter.title);
       // send back the book!
       res.json(savedScoreCard);
     });
   });
 });
 
-app.get('/api/fighters/:id', function (req, res) {
+app.get('/api/events/:id', function (req, res) {
   db.Fighter.findOne({_id: req.params._id }, function(err, data) {
     res.json(data);
   });
 });
 
-// create new fighter
-app.post('/api/fighters', function (req, res) {
+// create new event
+app.post('/api/events', function (req, res) {
   // create new book with form data (`req.body`)
   var newFighter = new db.Fighter({
     first_name: {
@@ -171,13 +171,13 @@ db.ScoreCard.findOne({name: req.body.scorecard}, function(err, scorecard){
   newFighter.scorecard = scorecard;
 
   // save newBook to database
-  newFighter.save(function(err, fighter){
+  newFighter.save(function(err, event){
     if (err) {
       return console.log("save error: " + err);
     }
-      console.log("saved ", fighter.title);
+      console.log("saved ", event.title);
       // send back the book!
-      res.json(fighter);
+      res.json(event);
     });
   });
 });

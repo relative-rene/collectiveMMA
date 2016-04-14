@@ -9,7 +9,8 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="scoreCard" href="/views/scoreCard.html"
+    <link rel="scoreCard" href="views/scoreCard.html">
+    <link rel="prediction" href="views/prediction.html">
 
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -36,8 +37,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/views/fighter.html">Pick A Fight <span class="sr-only">(current)</span></a></li>
-        <li><a href="./scoreCard.html">Score A Fight</a></li>
+        <li class="active"><a href="views/fighter.html">Pick A Fight <span class="sr-only">(current)</span></a></li>
+        <li><a href="views/scoreCard.html">Score A Fight</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -49,7 +50,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class='fighterCreate'><a href="#">Fighter</a></li>
+            <li class='fighterCreate'><a href="fighter.html">Fighter</a></li>
             <li><a href="#">Judge</a></li>
             <li><a href="#">Referee</a></li>
           </ul>
@@ -120,7 +121,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="singlebutton">Save Fighter</label>
               <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                <button id="signAfighter" name="singlebutton" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </fieldset>
@@ -140,6 +141,10 @@
           <h2>Fighters</h2>
         </div>
       </div>
+
+
+
+
       <!-- Create fighters! -->
       <div id='fighters'>
         <script id='fighter-template' type='text/x-handlebars-template'>
@@ -161,23 +166,23 @@
                       <ul class="list-group">
                         <li class="list-group-item">
                           <h4 class='inline-header'>First Name:</h4>
-                          <span class='fighter-name'>{{name}}</span>
+                          <span class='fighter-name'>{{first_name}}</span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Last Name:</h4>
-                          <span class='artist-name'>{{artistName}}</span>
+                          <span class='artist-name'>{{last_name}}</span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Pro Debut:</h4>
-                          <span class='fighter-birthName'>{{proDebut}}</span>
+                          <span class='fighter-birthName'>{{rookieYear}}</span>
                         </li>
 
 
                         <li class="list-group-item">
                           <h4 class="inline-header">Events:</h4>
-                          <span>&ndash; {{#each events}} ({{trackNumber}}) {{name}} &ndash;  {{/each}}</span>
+                          <span>&ndash; {{#each events}} ({{place}}) {{date}} &ndash;  {{/each}}</span>
                         </li>
 
                       </ul>

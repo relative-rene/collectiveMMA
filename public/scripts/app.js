@@ -2,7 +2,11 @@ console.log('Sanity Check: js is working');
 var template;
 
 $(document).ready(function(){
-
+  $.get('/api/fighters').success(function (fighters) {
+    fighters.forEach(function(fighter) {
+      renderFighter(fighter);
+    });
+  });
     $('#fighters').on('click', '.add-event', handleAddEventClick);
     $('#saveEvent').on('click', handleNewEventSubmit);
     $('#fighters').on('click', '.delete-fighter', handleDeleteFighterClick);
@@ -10,8 +14,9 @@ $(document).ready(function(){
     $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
     $('#fighters').on('click', '.edit-events', handleEditEventsClick);
 
-    $('#fighterBuilder-form form').on('submit', function(e) {
+    $('#fighterBuilder-form').on('submit','#signAfighter', function(e) {
         e.preventDefault();
+        console.log(e);
         var formData = $(this).serialize();
         console.log('formData', formData);
         $.post('/api/fighters', formData, function(fighter) {
@@ -20,7 +25,7 @@ $(document).ready(function(){
         });
         $(this).trigger("reset");
       });
-  });
+  });//doc ready ends=-----------
 
 
   function renderFighter(fighter) {
@@ -30,8 +35,12 @@ $(document).ready(function(){
     var html = fightersTemplate(fighter);
     $('#fighters').prepend(html);
   }
-
-
+  function handleEditEventsClick(){}
+  function handleAddEventClick(){}
+  function handleDeleteFighterClick(){}
+function handleFighterEditClick(){}
+function handleSaveChangesClick(){}
+function handleAddEventClick(){}
 function handleNewEventSubmit(e) {
   e.preventDefault();
   var $modal = $('#eventModal');
