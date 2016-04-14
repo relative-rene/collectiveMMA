@@ -19,7 +19,7 @@ var express = require('express'),
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,7 +69,7 @@ app.get('/api/fighters/:fighterId', controllers.fighters.show);
 app.post('/api/fighters', controllers.fighters.create);
 app.delete('/api/fighters/:fighterId', controllers.fighters.destroy);
 app.put('/api/fighters/:fighterId', controllers.fighters.update);
-app.post('/api/fighters/:fighterId/events', controllers.fightersEvents.create);
+// app.post('/api/fighters/:fighterId/events', controllers.fightersEvents.create);
 //judge route
 app.get('/api/judges', controllers.judges.index);
 app.get('/api/judges/:judgeId', controllers.judges.show);
