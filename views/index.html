@@ -137,7 +137,7 @@
     <section class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h2>Albums</h2>
+          <h2>Fighters</h2>
         </div>
       </div>
       <!-- Create fighters! -->
@@ -176,7 +176,7 @@
 
 
                         <li class="list-group-item">
-                          <h4 class="inline-header">Songs:</h4>
+                          <h4 class="inline-header">Events:</h4>
                           <span>&ndash; {{#each events}} ({{trackNumber}}) {{name}} &ndash;  {{/each}}</span>
                         </li>
 
@@ -245,27 +245,25 @@
     </div><!-- /.modal -->
 
 
-    <!-- Edit Songs Modal -->
-    <div class="modal fade bs-modal-lg" id="editSongsModal" tabindex="-1" role="dialog" aria-labelledby="editSongsModalTitle">
+    <!-- Edit Events Modal -->
+    <div class="modal fade bs-modal-lg" id="editEventsModal" tabindex="-1" role="dialog" aria-labelledby="editEventsModalTitle">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="editSongsModalTitle">Edit Song List</h4>
+            <h4 class="modal-title" id="editEventsModalTitle">Edit Event List</h4>
           </div>
-          <div class="modal-body" id='editSongsModalBody'>
-            <p> REPLACE #editSongsModalBody </p>
+          <div class="modal-body" id='editEventsModalBody'>
+            <p> REPLACE #editEventsModalBody </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id='editSongsModalSubmit'>Save changes</button>
+            <button type="button" class="btn btn-primary" id='editEventsModalSubmit'>Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </body>
-
-
 
 
 
