@@ -2,10 +2,7 @@ console.log('Sanity Check: js is working');
 var template;
 
 $(document).ready(function(){
-  $.get('/api/fighters').success(function (fighters) {
-    fighters.forEach(function(fighter) {
-      renderFighter(fighter);
-    });
+
   });
     $('#fighters').on('click', '.add-event', handleAddEventClick);
     $('#saveEvent').on('click', handleNewEventSubmit);
@@ -24,10 +21,13 @@ $(document).ready(function(){
           renderFighter(fighter);  //render the server's response
         });
         $(this).trigger("reset");
-      });
   });//doc ready ends=-----------
 
-
+  // $.get('/api/fighters').success(function (fighters) {
+  //   fighters.forEach(function(fighter) {
+  //     renderFighter(fighter);
+  //   });
+  // });
   function renderFighter(fighter) {
     console.log('rendering fighter', fighter);
     var fighterHtml = $('#fighter-template').html();

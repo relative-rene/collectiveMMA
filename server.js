@@ -9,6 +9,7 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    controllers = require('./controllers'),
 
     //  NEW ADDITIONS
     cookieParser = require('cookie-parser'),
@@ -18,7 +19,7 @@ var express = require('express'),
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
-app.use(express.static('public'));
+app.use(express.static(__dirname + 'public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -88,107 +89,9 @@ app.post('/api/scoreCards', controllers.scoreCards.create);
 app.delete('/api/scoreCards/:scoreCardId', controllers.scoreCards.destroy);
 app.put('/api/scoreCards/:scoreCardId', controllers.scoreCards.update);
 
-//get all fighters
-app.get('/api/fighters', function (req, res) {
-  // send all fighters as JSON response
-  db.ScoreCard.find().populate('ScoreCard').exec(function(err, fighter) {
-      if (err) { return console.log("index error: " + err); }
-      res.json(fighter);
-  });
-});
-
-// get one fighter
-app.get('/api/fighters/:id', function (req, res) {
-  db.ScoreCard.findOne({_id: req.params._id }, function(err, data) {
-    res.json(data);
-  });
-});
-
-// delete fighter
-app.delete('/api/fighters/:id', function (req, res) {
-  // get fighter id from url params (`req.params`)
-  console.log('fighters delete', req.params);
-  var fighterId = req.params.id;
-  // find the index of the fighter we want to remove
-  db.ScoreCard.findOneAndRemove({ _id: fighterId }, function (err, fighter) {
-    res.json(fighter);
-  });
-});
-
-// create new book
-app.post('/api/fighters', function (req, res) {
-  // create new book with form data (`req.body`)
-  var newScoreCard = new db.ScoreCard({
-    event1: req.body.event1,
-    event2: req.body.event2,
-    event1Score: req.body.event1Score,
-    event2Score: req.body.event2Score,
-  });
-
-// find the author from req.body
-db.Fighter.findOne({first_name: req.body.event}, function(err, foundFighter){
-  if (err) {
-    res.status(500).send(err);
-    return console.log(err);
-  }
-  // add this author to the book
-  newScoreCard.event = event;
-
-  // save newBook to database
-  newScoreCard.save(function(err, savedScoreCard){
-    if (err) {
-      res.status(500).send(err);
-      return console.log("save error: " + err);
-    }
-      console.log("saved ", fighter.title);
-      // send back the book!
-      res.json(savedScoreCard);
-    });
-  });
-});
-
-app.get('/api/events/:id', function (req, res) {
-  db.Fighter.findOne({_id: req.params._id }, function(err, data) {
-    res.json(data);
-  });
-});
-
-// create new event
-app.post('/api/events', function (req, res) {
-  // create new book with form data (`req.body`)
-  var newFighter = new db.Fighter({
-    first_name: {
-      type: String,
-      required:true
-    },
-    last_name:String,
-    wins: req.body.wins,
-    losses: req.body.losses,
-    draws: req.body.draws,
-    weight_class: [],
-    rookieYear: req.body.proDebut
-  });
-
-// find the author from req.body
-db.ScoreCard.findOne({name: req.body.scorecard}, function(err, scorecard){
-  if (err) {
-    return console.log(err);
-  }
-  // add this author to the book
-  newFighter.scorecard = scorecard;
-
-  // save newBook to database
-  newFighter.save(function(err, event){
-    if (err) {
-      return console.log("save error: " + err);
-    }
-      console.log("saved ", event.title);
-      // send back the book!
-      res.json(event);
-    });
-  });
-});
-
+/**********
+ * SERVER *
+ **********/
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening at http://localhost:3000/');
