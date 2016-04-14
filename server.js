@@ -53,33 +53,40 @@ app.get('/', function (req, res) {
 });
 
 //JSON API Endpoints
-app.get('/api', function apiIndex(req,res) {
-  //TODO: Document all api Endpoints
-  res.json({
-    message: "Collective MMA api",
-    documentation_url:'investigate what documentation url is and update',
-    base_url: "https://github.com/relative-rene/project-01",// this may cause issues make sure the url is correct
-    endpoints: [
-  {method: "GET", path: "/api", description: "Describes all available endpoints"},
-  {method: "GET", path: "/api/events", description: "retrieves all events"},
-  {method: "GET", path: "/api/events/:id", description: "retrieves specific event"},
-  {method: "POST", path: "/api/events", description: "creating new event"},
-  {method: "DELETE", path: "/api/events/:id", description: "removing specific event"},
-  {method: "GET", path: "/api/fighters", description: "retrieve all fighters"},
-  {method: "GET", path: "/api/fighters/:id", description: "retrieve specific fighter"},
-  {method: "POST", path: "/api/fighters", description: "creating new fighter"},
-  {method: "DELETE", path: "/api/fighters/:id", description: "remove specific fighter"},
-  // {method: "GET", path: "/api/users", description: "retrieve all users"},
-  // {method: "GET", path: "/api/users/:id", description: "retrieve specific user"},
-  // {method: "POST", path: "/api/users", description: "create new user"},
-  // {method: "DELETE", path: "/api/users/:id", description: "remove specific user"},
-  // {method: "GET", path: "/api/judges", description: "retrieve all judges"},
-  // {method: "GET", path: "/api/judges/:id", description: "retrieve specific judge"},
-  // {method: "POST", path: "/api/judges", description: "creating new judge"},
-  // {method: "DELETE", path: "/api/judges/:id", description: "remove specific judge"},
-]
-  });
-});
+
+
+app.get('/api', controllers.api.index);
+//event route
+app.get('/api/events', controllers.events.index);
+app.get('/api/events/:eventId', controllers.events.show);
+app.post('/api/events', controllers.events.create);
+app.delete('/api/events/:eventId', controllers.events.destroy);
+app.put('/api/events/:eventId', controllers.events.update);
+//fighter route
+app.get('/api/fighters', controllers.fighters.index);
+app.get('/api/fighters/:fighterId', controllers.fighters.show);
+app.post('/api/fighters', controllers.fighters.create);
+app.delete('/api/fighters/:fighterId', controllers.fighters.destroy);
+app.put('/api/fighters/:fighterId', controllers.fighters.update);
+app.post('/api/fighters/:fighterId/events', controllers.fightersEvents.create);
+//judge route
+app.get('/api/judges', controllers.judges.index);
+app.get('/api/judges/:judgeId', controllers.judges.show);
+app.post('/api/judges', controllers.judges.create);
+app.delete('/api/judges/:judgeId', controllers.judges.destroy);
+app.put('/api/judges/:judgeId', controllers.judges.update);
+//referee route
+app.get('/api/referees', controllers.referees.index);
+app.get('/api/referees/:refereeId', controllers.referees.show);
+app.post('/api/referees', controllers.referees.create);
+app.delete('/api/referees/:refereeId', controllers.referees.destroy);
+app.put('/api/referees/:refereeId', controllers.referees.update);
+//ScoreCard route
+app.get('/api/scoreCards', controllers.scoreCards.index);
+app.get('/api/scoreCards/:scoreCardId', controllers.scoreCards.show);
+app.post('/api/scoreCards', controllers.scoreCards.create);
+app.delete('/api/scoreCards/:scoreCardId', controllers.scoreCards.destroy);
+app.put('/api/scoreCards/:scoreCardId', controllers.scoreCards.update);
 
 //get all fighters
 app.get('/api/fighters', function (req, res) {

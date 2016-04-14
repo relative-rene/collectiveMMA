@@ -12,14 +12,16 @@ db.Fighter.find({}, function(err, allFighters){
 
 function create(req, res) {
   console.log('body', req.body);
-
-  // split at comma and remove and trailing space
-  // var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
-  // req.body.genres = genres;
+  var weight_class = req.body.weight_class.split(',').map(function(item) {
+    return item.trim();
+  });
+  req.body.weight_class = weight_class;
 
   db.Fighter.create(req.body, function(err, fighter) {
-    if (err) { console.log('error', err); }
-    console.log(fighter);
+    if (err) {
+      console.log('error', err);
+    }
+      console.log(fighter);
     res.json(fighter);
   });
 }
@@ -38,23 +40,26 @@ function destroy(req, res) {
   db.Fighter.findOneAndRemove({ _id: req.params.fighterId }, function(err,
 foundFighter) {
   // note you could send just send 204, but we're sending 200 and the deleted entity
-  re.json(foundFighter);
+  res.json(foundFighter);// they may need to be re.json
 });
 }
 
 function update(req, res) {
   console.log('updating with data', req.body);
   db.Fighter.findById(req.params.fighterId, function(err, foundFighter) {
-    if(err) { console.log('fightersController.update error', err); }
-    // foundFighter.artistName = req.body.artistName;
-    // foundFighter.name = req.body.name;
-    foundFighter.proDebut = req.body.proDebut;
+    if(err) { console.log('fightersController.update error', err);
+   }
+    foundFighter.first_name = req.body.first_name;
+    foundFighter.last_name = req.body.last_name;
+    foundFighter.rookieYear = req.body.rookieYear;
+    foundFighter.nextFight = req.body.nextFight;
+    foundFighter.weight_class= req.body.weight_class;
     foundFighter.save(function(err, savedFighter) {
-      if(err) { console.log('saving altered fighter failed'); }
-      res.json(savedFighter);
-    });
+      if(err) { console.log('saving altered fighter failed');
+    }
+    res.json(savedFighter);
   });
-
+});
 }
 
 // export public methods here
