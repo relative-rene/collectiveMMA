@@ -1,5 +1,10 @@
 $(document).ready(function() {
-createAfighter();
+  createAfighter();
+  $.get('/api/fighter', function(fighters){
+    fighters.forEach(function(fight) {
+      renderFighter(fight);
+    });
+  });
 });
 function renderFighter(fighter) {
   console.log('rendering fighter', fighter);

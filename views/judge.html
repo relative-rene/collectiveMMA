@@ -1,68 +1,90 @@
-<section id='fighterBuilder-form' class="container">
-      <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <form class="form-horizontal">
-          <fieldset>
+    <title> Score Card </title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
-            <!-- Form Name -->
-            <legend>Add New Fighter</legend>
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <!-- APPLICATION SCRIPTS -->
+    <script src="scripts/app.js"></script>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="division">Weight Class</label>
-              <div class="col-md-4">
-              <input id="division" name="division" type="text" placeholder="Division" class="form-control input-md">
+  </head>
+  <body>
+    <section id='fighterBuilder-form' class="container">
+          <div class="row">
+          <div class="col-md-10 col-md-offset-1">
 
-              </div>
-            </div>
+            <form class="form-horizontal">
+              <fieldset>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="familyName">Last Name</label>
-              <div class="col-md-4">
-              <input id="familyName" name="familyName" type="text" placeholder="Family Name" class="form-control input-md">
+                <!-- Form Name -->
+                <legend>Add New Fighter</legend>
 
-              </div>
-            </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="division">Weight Class</label>
+                  <div class="col-md-4">
+                  <input id="division" name="division" type="text" placeholder="Division" class="form-control input-md">
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="birthName">First Name</label>
-              <div class="col-md-4">
-              <input id="birthName" name="birthName" type="text" placeholder="Birth Name" class="form-control input-md">
+                  </div>
+                </div>
 
-              </div>
-            </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="familyName">Last Name</label>
+                  <div class="col-md-4">
+                  <input id="familyName" name="familyName" type="text" placeholder="Family Name" class="form-control input-md">
 
-            <!-- Textarea -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="rookieYear">Pro Debut</label>
-              <div class="col-md-4">
-              <input id="rookieYear" name="rookieYear" type="text" placeholder="optional" class="form-control input-md">
+                  </div>
+                </div>
 
-              </div>
-            </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="birthName">First Name</label>
+                  <div class="col-md-4">
+                  <input id="birthName" name="birthName" type="text" placeholder="Birth Name" class="form-control input-md">
 
-            <!-- Textarea -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="record">Record</label>
-              <div class="col-md-4">
-              <input id="record" name="record" type="text" placeholder="Wins Loss or Draws" class="form-control input-md">
+                  </div>
+                </div>
 
-              </div>
-            </div>
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="rookieYear">Pro Debut</label>
+                  <div class="col-md-4">
+                  <input id="rookieYear" name="rookieYear" type="text" placeholder="optional" class="form-control input-md">
+
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="record">Record</label>
+                  <div class="col-md-4">
+                  <input id="record" name="record" type="text" placeholder="Wins Loss or Draws" class="form-control input-md">
+
+                  </div>
+                </div>
 
 
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton">Save Fighter</label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-      </div>
-    </section>
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="singlebutton">Save Fighter</label>
+                  <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          </div>
+        </section>
+
+  </body>
+</html>

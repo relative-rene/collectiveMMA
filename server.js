@@ -58,7 +58,7 @@ app.get('/fighter', function (req, res) {
 });
 
 app.get('/scoreCard', function (req, res) {
-  res.sendFile(__dirname + '/views/fighter.html');
+  res.sendFile(__dirname + '/views/scoreCard.html');
 });
 
 app.get('/prediction', function (req, res) {
@@ -66,7 +66,7 @@ app.get('/prediction', function (req, res) {
 });
 
 app.get('/referee', function (req, res) {
-  res.sendFile(__dirname + '/views/ referee.html');
+  res.sendFile(__dirname + '/views/referee.html');
 });
 
 app.get('/judge', function (req, res) {
