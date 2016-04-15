@@ -12,10 +12,10 @@ db.Fighter.find({}, function(err, allFighters){
 
 function create(req, res) {
   console.log('body', req.body);
-  var weight_class = req.body.weight_class.split(',').map(function(item) {
+  var division = req.body.division.split(',').map(function(item) {
     return item.trim();
   });
-  req.body.weight_class = weight_class;
+  req.body.division = division;
 
   db.Fighter.create(req.body, function(err, fighter) {
     if (err) {
@@ -49,11 +49,11 @@ function update(req, res) {
   db.Fighter.findById(req.params.fighterId, function(err, foundFighter) {
     if(err) { console.log('fightersController.update error', err);
    }
-    foundFighter.first_name = req.body.first_name;
-    foundFighter.last_name = req.body.last_name;
+    foundFighter.birthName = req.body.birthName;
+    foundFighter.familyName = req.body.familyName;
     foundFighter.rookieYear = req.body.rookieYear;
     foundFighter.nextFight = req.body.nextFight;
-    foundFighter.weight_class= req.body.weight_class;
+    foundFighter.division= req.body.division;
     foundFighter.save(function(err, savedFighter) {
       if(err) { console.log('saving altered fighter failed');
     }

@@ -15,15 +15,15 @@
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="vendor/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-primary">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+  <nav class="navbar navbar-primary">
+   <div class="container-fluid">
+     <!--Brand and toggle get grouped for better mobile display-->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -34,7 +34,7 @@
       <a class="navbar-brand" href="#">MMA Collective</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!--Collect the nav links, forms, and other content for toggling-->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="views/fighter.html">Pick A Fight <span class="sr-only">(current)</span></a></li>
@@ -50,15 +50,15 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class='fighterCreate'><a href="fighter.html">Fighter</a></li>
+            <li class='navBarfighterCreate'><a href="fighter.html">Fighter</a></li>
             <li><a href="#">Judge</a></li>
             <li><a href="#">Referee</a></li>
           </ul>
         </li>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!--/.navbar-collapse-->
+  </div><!--/.container-fluid-->
 </nav>
 
 <section id='fighterBuilder-form' class="container">
@@ -75,7 +75,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="division">Weight Class</label>
               <div class="col-md-4">
-              <input id="division" name="division" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="division" name="division" type="text" placeholder="Division" class="form-control input-md">
 
               </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="familyName">Last Name</label>
               <div class="col-md-4">
-              <input id="familyName" name="familyName" type="text" placeholder="" class="form-control input-md">
+              <input id="familyName" name="familyName" type="text" placeholder="Family Name" class="form-control input-md">
 
               </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="birthName">First Name</label>
               <div class="col-md-4">
-              <input id="birthName" name="birthName" type="text" placeholder="" class="form-control input-md">
+              <input id="birthName" name="birthName" type="text" placeholder="Birth Name" class="form-control input-md">
 
               </div>
             </div>
@@ -121,7 +121,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="singlebutton">Save Fighter</label>
               <div class="col-md-4">
-                <button id="signAfighter" name="singlebutton" class="btn btn-primary">Submit</button>
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </fieldset>
@@ -166,17 +166,17 @@
                       <ul class="list-group">
                         <li class="list-group-item">
                           <h4 class='inline-header'>First Name:</h4>
-                          <span class='fighter-name'>{{first_name}}</span>
+                          <span class='birthName'>{{birthName}}</span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Last Name:</h4>
-                          <span class='artist-name'>{{last_name}}</span>
+                          <span class='familyName'>{{familyName}}</span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Pro Debut:</h4>
-                          <span class='fighter-birthName'>{{rookieYear}}</span>
+                          <span class='rookieYear'>{{rookieYear}}</span>
                         </li>
 
 
