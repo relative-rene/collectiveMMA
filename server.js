@@ -53,8 +53,26 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-//JSON API Endpoints
+app.get('/fighter', function (req, res) {
+  res.sendFile(__dirname + '/views/fighter.html');
+});
 
+app.get('/scoreCard', function (req, res) {
+  res.sendFile(__dirname + '/views/fighter.html');
+});
+
+app.get('/prediction', function (req, res) {
+  res.sendFile(__dirname + '/views/prediction.html');
+});
+
+app.get('/referee', function (req, res) {
+  res.sendFile(__dirname + '/views/ referee.html');
+});
+
+app.get('/judge', function (req, res) {
+  res.sendFile(__dirname + '/views/judge.html');
+});
+//JSON API Endpoints
 
 app.get('/api', controllers.api.index);
 //event route
