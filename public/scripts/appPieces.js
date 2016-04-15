@@ -1,13 +1,6 @@
 console.log('Sanity Check: js is working');
 var template;
 
-function renderFighter(fighter) {
-  console.log('rendering fighter', fighter);
-  var fighterHtml = $('#fighter-template').html();
-  var fightersTemplate = Handlebars.compile(fighterHtml);
-  var html = fightersTemplate(fighter);
-  $('#fighters').prepend(html);
-}
 
 $(document).ready(function() {
   $('#fighters').on('click', '.add-event', handleAddEventClick);

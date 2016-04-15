@@ -12,5 +12,11 @@ $('#fighterBuilder-form form').on('submit', function(e) {
   });
 });
 });
-
+function renderFighter(fighter) {
+  console.log('rendering fighter', fighter);
+  var fighterHtml = $('#fighter-template').html();
+  var fightersTemplate = Handlebars.compile(fighterHtml);
+  var html = fightersTemplate(fighter);
+  $('#fighters').prepend(html);
+}
 console.log('sanity check');

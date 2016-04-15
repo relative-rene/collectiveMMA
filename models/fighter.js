@@ -6,22 +6,22 @@ var Schema = mongoose.Schema;
 var fighterSchema = new Schema({
   wins: {
     type: Number,
-    required: true
+    required: false
   },
   losses: {
     type: Number,
-    required: true
+    required: false
   },
   draws: Number,
-  last_name: {
+  familyName: {
     type: String,
     required: true
   },
-  first_name: {
+  birthName: {
     type: String,
     required: true
     },
-  weight_class: [String],
+  division: [String],
   rookieYear: String,
   nextFight: String
 });
