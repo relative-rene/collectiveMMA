@@ -23,7 +23,8 @@ var fighterSchema = new Schema({
     },
   division: [String],
   rookieYear: String,
-  nextFight: String
+  nextFight: String,
+  moniker: String,
 });
 
 module.exports = mongoose.model('Fighter', fighterSchema);

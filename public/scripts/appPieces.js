@@ -32,12 +32,7 @@ function createAfighter(){
   });//doc ready ends=-----------
 }
 
-function handleEditEventsClick(){}
-function handleAddEventClick(){}
-function handleDeleteFighterClick(){}
-function handleFighterEditClick(){}
-function handleSaveChangesClick(){}
-function handleAddEventClick(){}
+
 function handleNewEventSubmit(e) {
   e.preventDefault();
   var $modal = $('#eventModal');
@@ -75,16 +70,6 @@ function handleNewEventSubmit(e) {
 }
 
 
-$("li .fighterCreate").click(function(){
-  $.ajax({
-    url:".kdjasfkl;",
-    method:"POST",
-    success:createFighter,
-    error:function(event){
-      console.log('fighter create not working',event);
-    }
-  });
-});
 
 $('#Submit-total').on('click',function(){
     var fighter1Total, fighter2Total;
