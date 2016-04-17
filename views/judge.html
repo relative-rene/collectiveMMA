@@ -17,74 +17,91 @@
 
   </head>
   <body>
-    <section id='fighterBuilder-form' class="container">
-          <div class="row">
-          <div class="col-md-10 col-md-offset-1">
+    <nav class="navbar navbar-primary">
+     <div class="container-fluid">
 
-            <form class="form-horizontal">
-              <fieldset>
+       <!--Brand and toggle get grouped for better mobile display-->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">MMA Collective</a>
+      </div>
 
-                <!-- Form Name -->
-                <legend>Add New Fighter</legend>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="division">Weight Class</label>
-                  <div class="col-md-4">
-                  <input id="division" name="division" type="text" placeholder="Division" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="familyName">Last Name</label>
-                  <div class="col-md-4">
-                  <input id="familyName" name="familyName" type="text" placeholder="Family Name" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="birthName">First Name</label>
-                  <div class="col-md-4">
-                  <input id="birthName" name="birthName" type="text" placeholder="Birth Name" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Textarea -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="rookieYear">Pro Debut</label>
-                  <div class="col-md-4">
-                  <input id="rookieYear" name="rookieYear" type="text" placeholder="optional" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Textarea -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="record">Record</label>
-                  <div class="col-md-4">
-                  <input id="record" name="record" type="text" placeholder="Wins Loss or Draws" class="form-control input-md">
-
-                  </div>
-                </div>
-
-
-                <!-- Button -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="singlebutton">Save Fighter</label>
-                  <div class="col-md-4">
-                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
-              </fieldset>
-            </form>
+      <!--Collect the nav links, forms, and other content for toggling-->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="schedule">Upcoming Events</a></li>
+          <li><a href="prediction">Pick A Fight </a></li>
+          <li><a href="scoreCard">Score A Fight</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Referee Search">
           </div>
-          </div>
-        </section>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class='navBarfighterCreate'><a href="fighter">Referee</a></li>
+              <li><a href="judge">Judge</a></li>
+              <li><a href="referee">Referee</a></li>
+            </ul>
+          </li>
+          </li>
+        </ul>
+      </div><!--/.navbar-collapse-->
+    </div><!--/.container-fluid-->
+  </nav>
+
+  <section id='fighterBuilder-form' class="container">
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <form class="form-horizontal">
+            <fieldset>
+
+              <!-- Form Name -->
+              <legend>Add New Referee</legend>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="familyName">Last Name</label>
+                <div class="col-md-4">
+                <input id="familyName" name="familyName" type="text" placeholder="Family Name" class="form-control input-md">
+
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="birthName">First Name</label>
+                <div class="col-md-4">
+                <input id="birthName" name="birthName" type="text" placeholder="Birth Name" class="form-control input-md">
+
+                </div>
+              </div>
+
+              <!-- Textarea -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="rookieYear">Pro Debut</label>
+                <div class="col-md-4">
+                <input id="rookieYear" name="rookieYear" type="text" placeholder="optional" class="form-control input-md">
+
+                </div>
+              </div>
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton">Save Referee</label>
+                <div class="col-md-4">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        </div>
+      </section>
 
   </body>
 </html>
