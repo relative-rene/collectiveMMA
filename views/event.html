@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <nav class="navbar navbar-primary">
-     <div class="container-fluid">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-       <!--Brand and toggle get grouped for better mobile display-->
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">MMA Collective</a>
-      </div>
+  <title> Score Card </title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- VENDOR SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- APPLICATION SCRIPTS -->
+  <script src="scripts/app.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-primary">
+   <div class="container-fluid">
+
+     <!--Brand and toggle get grouped for better mobile display-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index">MMA Collective</a>
+    </div>
 
       <!--Collect the nav links, forms, and other content for toggling-->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="schedule">Upcoming Events</a></li>
+          <li><a href="event">Upcoming Events</a></li>
           <li><a href="prediction">Pick A Fight </a></li>
           <li><a href="scoreCard">Score A Fight</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Fighter Search">
+            <input type="text" class="form-control" placeholder="Event Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -30,7 +42,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class='navBarfighterCreate'><a href="fighter">Fighter</a></li>
+              <li class='navBareventCreate'><a href="event">Event</a></li>
               <li><a href="judge">Judge</a></li>
               <li><a href="referee">Referee</a></li>
             </ul>
@@ -40,56 +52,138 @@
       </div><!--/.navbar-collapse-->
     </div><!--/.container-fluid-->
   </nav>
-    <section id='eventBuilder-form' class="container">
-          <div class="row">
-          <div class="col-md-10 col-md-offset-1">
 
-            <form class="form-horizontal">
-              <fieldset>
+  <section id='eventBuilder-form' class="container">
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
 
-                <!-- Form Name -->
-                <legend>Add New Event</legend>
+          <form class="form-horizontal">
+            <fieldset>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="arena">Arena Name</label>
-                  <div class="col-md-6 col-xs-6">
-                  <input id="arena" name="arena" type="text" placeholder="MGM Grand Garden Arena" class="form-control input-md">
+              <!-- Form Name -->
+              <legend>Add New Event</legend>
 
-                  </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="headliners">Main Event</label>
+                <div class="col-md-6 col-xs-6">
+                <input id="headliners" name="headliners" type="text" placeholder="Brock Lesner vs Frank Mir" class="form-control input-md">
+
                 </div>
+              </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="city">The City And State</label>
-                  <div class="col-md-6 col-xs-6">
-                  <input id="city" name="city" type="text" placeholder="Las Vegas, NV" class="form-control input-md">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="date">Date</label>
+                <div class="col-md-6 col-xs-6">
+                <input id="date" name="date" type="text" placeholder="July 11, 2009" class="form-control input-md">
 
-                  </div>
                 </div>
+              </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="day">Date of Event</label>
-                  <div class="col-md-6 col-xs-6">
-                  <input id="day" name="day" type="text" placeholder="May 27, 2017" class="form-control input-md">
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="arena">Arena Name</label>
+                <div class="col-md-6 col-xs-6">
+                <input id="arena" name="arena" type="text" placeholder="MGM Grand Garden Arena" class="form-control input-md">
 
-                  </div>
                 </div>
+              </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="singlebutton">Save Event</label>
-                  <div class="col-md-6 col-xs-6">
-                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
-                  </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="city">The City And State</label>
+                <div class="col-md-6 col-xs-6">
+                <input id="city" name="city" type="text" placeholder="Las Vegas, NV" class="form-control input-md">
+
                 </div>
+              </div>
 
-            </fieldset>
-          </form>
+              <!-- Button -->
+              <div class="form-group">
+                <div class="col-md-6 col-xs-6">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>UpComing Events</h2>
         </div>
-        </div>
-      </section>
+      </div>
+
+      <!-- Create events! -->
+      <div id='events'>
+        <script id='event-template' type='text/x-handlebars-template'>
+          <!-- one event -->
+          <div class="row event" data-event-id="{{_id}}">
+
+            <div class="col-md-10 col-md-offset-1">
+              <div class="panel panel-default">
+                <div class="panel-body">
+
+
+                <!-- begin event internal row -->
+                  <div class='row'>
+                    <div class="col-md-3 col-xs-12 thumbnail event-art">
+                      <img src="" alt="event image">
+                    </div>
+
+                    <div class="col-md-10-offset-1 col-sm-10 col-xs-10">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <h4 class='inline-header'> Main Event: </h4>
+                          <span class='headliners'> {{headliners}} </span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'> Arena </h4>
+                          <span class='arena'> {{arena}} </span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>  City And State: </h4>
+                          <span class='city'> {{city}} </span>
+                        </li>
+
+
+                        <li class="list-group-item">
+                          <h4 class="inline-header">Events:</h4>
+                          <span>&ndash; {{#each events}} ({{place}}) {{date}} &ndash;  {{/each}}</span>
+                        </li>
+
+                      </ul>
+                    </div>
+
+                  </div>
+                  <!-- end of event internal row -->
+
+                  <div class='panel-footer'>
+                    <div class='panel-footer'>
+                      <button class='btn btn-primary add-fight'>Add Fight</button>
+                      <button class='btn btn-primary edit-event'>Edit Event</button>
+                      <button class='btn btn-primary save-event hidden'>Save Changes</button>
+                      <button class='btn btn-danger delete-event'>Delete Event</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end one event -->
+        </script>
+
+      </div>
+    </section>
 
   </body>
 </html>

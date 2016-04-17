@@ -16,10 +16,10 @@
 
   function create(req, res) {
     console.log('body', req.body);
-    var weight_class = req.body.weight_class.split(',').map(function(item) {
+    var fight = req.body.fights.split(',').map(function(item) {
       return item.trim();
     });
-    req.body.weight_class = weight_class;
+    req.body.fight = fight;
 
     db.Event.create(req.body, function(err, event) {
       if (err) {
@@ -53,11 +53,11 @@
     db.Event.findById(req.params.eventId, function(err, foundEvent) {
       if(err) { console.log('eventsController.update error', err);
      }
-      foundEvent.first_name = req.body.first_name;
-      foundEvent.last_name = req.body.last_name;
+      foundEvent.headliner = req.body.headliner;
+      foundEvent.arena = req.body.arena;
       foundEvent.rookieYear = req.body.rookieYear;
       foundEvent.nextFight = req.body.nextFight;
-      foundEvent.weight_class= req.body.weight_class;
+      foundEvent.fight= req.body.fight;
       foundEvent.save(function(err, savedEvent) {
         if(err) { console.log('saving altered event failed');
       }

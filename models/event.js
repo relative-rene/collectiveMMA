@@ -2,8 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-  place:String,
+  headliners:String,
+  arena:String,
   date:String,
+  city:String,
   fights:[String]
 });
 
