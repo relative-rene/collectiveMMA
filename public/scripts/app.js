@@ -1,10 +1,16 @@
 $(document).ready(function() {
   createAfighter();
-  $.get('/api/fighter', function(fighters){
+  $.get('/api/fighters', function(fighters){
     fighters.forEach(function(fight) {
       renderFighter(fight);
     });
   });
+  $('#fighters').on('click', '.add-event', handleAddEventClick);
+  $('#saveEvent').on('click', handleNewEventSubmit);
+  $('#fighters').on('click', '.delete-fighter', handleDeleteFighterClick);
+  $('#fighters').on('click', '.edit-fighter', handleFighterEditClick);
+  $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
+  $('#fighters').on('click', '.edit-events', handleEditEventsClick);
 });
 function renderFighter(fighter) {
   console.log('rendering fighter', fighter);
@@ -15,15 +21,11 @@ function renderFighter(fighter) {
 }
 function handleEditEventsClick(){}
 function handleAddEventClick(){}
-function handleDeleteFighterClick(){}
-function handleFighterEditClick(){}
-function handleSaveChangesClick(){}
-function handleAddEventClick(){}
 
-function handleAlbumEditClick(e) {
+function handleFighterEditClick(e) {
   var $fighterRow = $(this).closest('.fighter');
-  var albumId = $fighterRow.data('fighter-id');
-  console.log('edit fighter', albumId);
+  var fighterId = $fighterRow.data('fighter-id');
+  console.log('edit fighter', fighterId);
 
   // show the save changes button
   $fighterRow.find('.save-fighter').toggleClass('hidden');
@@ -31,8 +33,8 @@ function handleAlbumEditClick(e) {
   $fighterRow.find('.edit-fighter').toggleClass('hidden');
 
   // get the fighter name and replace its field with an input element
-  var albumName = $fighterRow.find('span.fighter-name').text();
-  $fighterRow.find('span.fighter-name').html('<input class="edit-fighter-name" value="' + albumName + '"></input>');
+  var fighterName = $fighterRow.find('span.fighter-name').text();
+  $fighterRow.find('span.fighter-name').html('<input class="edit-fighter-name" value="' + fighterName + '"></input>');
 
   // get the event name and replace its field with an input element
   var eventName = $fighterRow.find('span.event-name').text();
@@ -58,10 +60,26 @@ function handleSaveChangesClick(event){
 
     $.ajax({
       method: 'PUT',
-      url: '/api/albums/' + fighterId,
+      url: '/api/fighters/' + fighterId,
       data: data,
       success: handleFighterUpdateResponse
     });
+}
+function handleDeleteFighterClick(e) {
+  var fighterId = $(this).parents('.fighter').data('fighter-id');
+  console.log('someone wants to delete fighter id=' + fighterId );
+  $.ajax({
+    url: '/api/fighters/' + fighterId,
+    method: 'DELETE',
+    success: handleDeleteFighterSuccess
+  });
+}
+
+// callback after DELETE /api/fighters/:id
+function handleDeleteFighterSuccess(data) {
+  var deletedFighterId = data._id;
+  console.log('removing the following fighter from the page:', deletedFighterId);
+  $('div[data-fighter-id=' + deletedFighterId + ']').remove();
 }
 function createAfighter() {
   $('#fighterBuilder-form form').on('submit', function(e) {
@@ -75,6 +93,7 @@ function createAfighter() {
     }).error(function(){
       console.log('their was an error with your post',fighter);
     });
+    $(this).trigger('reset');
   });
 }
 console.log('sanity check');
