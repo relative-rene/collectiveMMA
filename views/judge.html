@@ -34,7 +34,7 @@
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Referee Search">
+            <input type="text" class="form-control" placeholder="Judge Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -42,9 +42,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class='navBarfighterCreate'><a href="fighter">Referee</a></li>
+              <li class='navBarjudgeCreate'><a href="judge">Judge</a></li>
               <li><a href="judge">Judge</a></li>
-              <li><a href="referee">Referee</a></li>
+              <li><a href="judge">Judge</a></li>
             </ul>
           </li>
           </li>
@@ -53,7 +53,7 @@
     </div><!--/.container-fluid-->
   </nav>
 
-  <section id='fighterBuilder-form' class="container">
+  <section id='judgeBuilder-form' class="container">
         <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
@@ -61,7 +61,7 @@
             <fieldset>
 
               <!-- Form Name -->
-              <legend>Add New Referee</legend>
+              <legend>Add New Judge</legend>
 
               <!-- Text input-->
               <div class="form-group">
@@ -92,7 +92,7 @@
 
               <!-- Button -->
               <div class="form-group">
-                <label class="col-md-4 control-label" for="singlebutton">Save Referee</label>
+                <label class="col-md-4 control-label" for="singlebutton">Save Judge</label>
                 <div class="col-md-4">
                   <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
                 </div>
@@ -100,6 +100,81 @@
             </fieldset>
           </form>
         </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <h2>Judges</h2>
+          </div>
+        </div>
+
+
+
+
+        <!-- Create judges! -->
+        <div id='judges'>
+          <script id='judge-template' type='text/x-handlebars-template'>
+            <!-- one judge -->
+            <div class="row judge" data-judge-id="{{_id}}">
+
+              <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+
+
+                  <!-- begin judge internal row -->
+                    <div class='row'>
+                      <div class="col-md-3 col-xs-12 thumbnail judge-art">
+                        <img src="" alt="judge image">
+                      </div>
+
+                      <div class="col-md-10-offset-1 col-sm-10 col-xs-10">
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            <h4 class='inline-header'> First Name: </h4>
+                            <span class='birthName'> {{birthName}} </span>
+                          </li>
+
+                          <li class="list-group-item">
+                            <h4 class='inline-header'> Last Name: </h4>
+                            <span class='familyName'> {{familyName}} </span>
+                          </li>
+
+                          <li class="list-group-item">
+                            <h4 class='inline-header'> Pro Debut: </h4>
+                            <span class='rookieYear'> {{rookieYear}} </span>
+                          </li>
+
+
+                          <li class="list-group-item">
+                            <h4 class="inline-header">Events:</h4>
+                            <span>&ndash; {{#each events}} ({{place}}) {{date}} &ndash;  {{/each}}</span>
+                          </li>
+
+                        </ul>
+                      </div>
+
+                    </div>
+                    <!-- end of judge internal row -->
+
+                    <div class='panel-footer'>
+                      <div class='panel-footer'>
+                        <button class='btn btn-primary add-event'>Add Event</button>
+                        <button class='btn btn-primary edit-judge'>Edit Judge</button>
+                        <button class='btn btn-primary save-judge hidden'>Save Changes</button>
+                        <button class='btn btn-danger delete-judge'>Delete Judge</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end one judge -->
+          </script>
+
         </div>
       </section>
 

@@ -18,6 +18,7 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
+
   </head>
   <body>
     <nav class="navbar navbar-primary">
@@ -47,9 +48,10 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li class='navBarfighterCreate'><a href="fighter">Fighter</a></li>
+                    <li class='navCreate'><a href="fighter">Fighter</a></li>
                     <li><a href="judge">Judge</a></li>
                     <li><a href="referee">Referee</a></li>
+                    <li><a href="event">Event</a></li>
                   </ul>
                 </li>
               </li>
@@ -135,8 +137,8 @@
       </div>
     </section>
 
-    <!-- pick a fight modal, wont be visible until you click pick a fight on nav bar -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="predictionModal">
+    <!-- begin addFight modal, wont be visible until you click add fight-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -146,19 +148,35 @@
           <div class="modal-body">
 
             <fieldset class='form-horizontal'>
+
               <!-- Text input-->
               <div class="form-group">
-                <label class="col-md-4 control-label" for="favoriteName">Favorite</label>
+                <label class="col-md-4 control-label" for="opponent">Opponent</label>
                 <div class="col-md-4">
-                  <input id="favoriteName" name="favoriteName" type="text" placeholder="Select a fighter" class="form-control input-md" required="">
+                  <input id="opponent" name="opponent" type="text" placeholder="Select a fighter" class="form-control input-md" required="">
                 </div>
               </div>
 
               <!-- Text input-->
               <div class="form-group">
-                <label class="col-md-4 control-label" for="dogName">Underdog</label>
+                <label class="col-md-4 control-label" for="date">Date</label>
                 <div class="col-md-4">
-                  <input id="dogName" name="dogName" type="text" placeholder="Select a fighter" class="form-control input-md">
+                  <input id="date" name="date" type="text" placeholder="July 26, 2014" class="form-control input-md">
+                </div>
+              </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="arena">Arena Name</label>
+                <div class="col-md-4">
+                  <input id="arena" name="arena" type="text" placeholder="SAP Center " class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="city">The City And State</label>
+                <div class="col-md-4">
+                  <input id="city" name="city" type="text" placeholder="San Jose, CA" class="form-control input-md">
                 </div>
               </div>
             </fieldset>
@@ -166,7 +184,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="setMatch">Make the Match</button>
+            <button type="button" class="btn btn-primary" id="safeMatch">Make the Match</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -195,21 +213,21 @@
 
 
 
-    <!-- template for editing / deleting a prediction -->
-    <script id='prediction-edit-template' type='text/x-handlebars-template'>
+    <!-- template for editing / deleting a event -->
+    <script id='event-edit-template' type='text/x-handlebars-template'>
       {{#each events}}
       <!-- confused by ../fighterId ?  See:
       http://stackoverflow.com/questions/12297959/access-properties-of-the-parent-with-a-handlebars-each-loop#12297980
       -->
       <form class="form-inline" id="{{_id}}" data-fighter-id="{{../fighterId}}" >
         <div class="form-group">
-          <input type="text" class="form-control prediction-placeArena" value="{{placeArena}}">
+          <input type="text" class="form-control event-placeArena" value="{{placeArena}}">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control prediction-name" value="{{name}}">
+          <input type="text" class="form-control event-name" value="{{name}}">
         </div>
         <div class="form-group">
-          <button class="btn btn-danger" data-prediction-id="{{_id}}">x</button>
+          <button class="btn btn-danger" data-event-id="{{_id}}">x</button>
         </div>
       </form>
       {{/each}}
