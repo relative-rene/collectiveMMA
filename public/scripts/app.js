@@ -1,31 +1,32 @@
 $(document).ready(function() {
   createAfighter();
-
+  //index.html fighters
   $('#fighters').on('click', '.add-event', handleAddEventClick);
-  $('#saveEvent').on('click', handleNewEventSubmit);
   $('#fighters').on('click', '.delete-fighter', handleDeleteFighterClick);
+  //button hides on click
   $('#fighters').on('click', '.edit-fighter', handleFighterEditClick);
   $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
+
+
+  //Make the match
+  $('#saveMatch').on('click', handleNewEventSubmit);
   $('#fighters').on('click', '.edit-events', handleEditEventsClick);
 
-  $.get('/api/fighters', function(fighters){
+  $.get('/api/fighters', function(fighters) {
     fighters.forEach(function(fight) {
       renderFighter(fight);
     });
   });
 
   //The below renders all Upcoming Events on event.html
-  $.get('/api/events', function(matches){
+  $.get('/api/events', function(matches)  {
     matches.forEach(function(match) {
       renderEvent(match);
     });
   });
+});
 
-
-} );
-
-// //The below renders the entire fighter list on index.html
-
+//////helper functions
 function renderEvent(match) {
   console.log('rendering event', match);
   var eventHtml = $('#event-template').html();
@@ -59,7 +60,7 @@ function handleAddEventClick(e) {
 
 function handleNewEventSubmit(event) {
   event.preventDefault();
-  var $modal = $('#eventModal');
+  var $modal = $('#saveMatch');
   var $opponentField = $modal.find('#opponent');
   var $dateField = $modal.find('#date');
   var $arenaField = $modal.find('#arena');
@@ -72,17 +73,20 @@ function handleNewEventSubmit(event) {
     fights:$opponentField.val(),
     arena:$arenaField.val(),
     city:$cityField.val(),
-
   };
-  var fighterId = $modal.data('fighterId');
+console.log(dataToPost);
+  var fighterId = $modal.data('fighter-id');
   console.log('retrieved eventName:', eventName, ' and placeArena:', placeArena, ' for fighter w/ id: ', fighterId);
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
   $.post(eventPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /events:', data);
     // clear form
-    $eventNameField.val('');
-    $placeArenaField.val('');
+
+    $dateField.val('');
+    $opponentField.val('');
+    $arenaField.val('');
+    $cityField.val('');
 
     // close modal
     $modal.modal('hide');
@@ -97,6 +101,7 @@ function handleNewEventSubmit(event) {
     console.log('post to /api/fighters/:fighterId/events resulted in error', err);
   });
 }
+
 function handleEditEventsClick(e) {
   //the below gathers
   var $fighterRow = $(this).closest('.fighter');
@@ -119,16 +124,16 @@ function handleFighterEditClick(e) {
   $fighterRow.find('.edit-fighter').toggleClass('hidden');
 
   // get the fighter name and replace its field with an input element
-  var fighterName = $fighterRow.find('span.fighter-name').text();
-  $fighterRow.find('span.fighter-name').html('<input class="edit-fighter-name" value="' + fighterName + '"></input>');
+  var birthName = $fighterRow.find('span.birthName').text();
+  $fighterRow.find('span.birthName').html('<input class="edit-birthName" value="' + birthName + '"></input>');
 
   // get the event name and replace its field with an input element
-  var eventName = $fighterRow.find('span.event-name').text();
-  $fighterRow.find('span.event-name').html('<input class="edit-event-name" value="' + eventName + '"></input>');
+  var familyName = $fighterRow.find('span.familyName').text();
+  $fighterRow.find('span.familyName').html('<input class="edit-familyName" value="' + familyName + '"></input>');
 
-  // get the releasedate and replace its field with an input element
-  var releaseDate = $fighterRow.find('span.fighter-releaseDate').text();
-  $fighterRow.find('span.fighter-releaseDate').html('<input class="edit-fighter-releaseDate" value="' + releaseDate + '"></input>');
+  // get the rookieYear and replace its field with an input element
+  var rookieYear = $fighterRow.find('span.fighter-rookieYear').text();
+  $fighterRow.find('span.fighter-rookieYear').html('<input class="edit-rookieYear" value="' + rookieYear + '"></input>');
 }
 
 
@@ -139,9 +144,9 @@ function handleSaveChangesClick(event){
   var $fighterRow = $('[data-fighter-id='+ fighterId + ']');
   //this variable is capturing the value entered in the edit input
   var data = {
-    nextFight: $fighterRow.find('.edit-fighter-nextFight').val(),
-    moniker: $fighterRow.find('.edit-fighter-moniker').val(),
-    fantasyFight: $fightRow.find('.edit-fighter-ff').val()
+    birthName: $fighterRow.find('.edit-fighter').val(),
+    familyName: $fighterRow.find('.edit-fighter').val(),
+    rookieYear: $fighterRow.find('.edit-fighter').val()
   };
     console.log('PUTing data for fighter', fighterId, 'with data', data);
 
@@ -149,7 +154,7 @@ function handleSaveChangesClick(event){
       method: 'PUT',
       url: '/api/fighters/' + fighterId,
       data: data,
-      success: handleFighterUpdateResponse
+      success: handleFighterEditClick
     });
 }
 
@@ -208,34 +213,51 @@ function createnewEvent(sent) {
 }
 
 
-  var $modal = $('#eventModal');
-  var $eventNameField = $modal.find('#eventName');
-  var $placeArenaField = $modal.find('#placeArena');
-  // get data from modal fields
-  // note the server expects the keys to be 'name', 'placeArena' so we use those.
-  var dataToPost = {
-    name: $eventNameField.val(),
-    placeArena: $placeArena.val()
-  };
-  var fighterId = $modal.data('fighterId');
-  console.log('retrieved eventName:', eventName, ' and placeArena:', placeArena, ' for fighter w/ id: ', fighterId);
-  // POST to SERVER
-  var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
-  $.post(eventPostToServerUrl, dataToPost, function(data) {
-    console.log('received data from post to /events:', data);
-    // clear form
-    $eventNameField.val('');
-    $placeArenaField.val('');
+//   var $modal = $('#eventModal');
+//   var $eventNameField = $modal.find('#eventName');
+//   var $placeArenaField = $modal.find('#placeArena');
+//   // get data from modal fields
+//   // note the server expects the keys to be 'name', 'placeArena' so we use those.
+//   var dataToPost = {
+//     date:$dateField.val(),
+//     fights:$opponentField.val(),
+//     arena:$arenaField.val(),
+//     city:$cityField.val(),
+//   };
+//   var fighterId = $modal.data('fighterId');
+//   console.log('retrieved eventName:', eventName, ' and placeArena:', placeArena, ' for fighter w/ id: ', fighterId);
+//   console.log('Date:',$dateField, 'Opponent:'+$opponentField, 'Arena:' + $arenaField, 'City:'+ $cityField, ' for fighter w/ id: '+ fighterId);
+//   // POST to SERVER
+//   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
+//
+//   $.post(eventPostToServerUrl, dataToPost, function(data) {
+//     console.log('received data from post to /events:', data);
+//     // clear form
+//     $dateField.val(''),
+//     $opponentField.val(''),
+//     $arenaField.val(''),
+//     $cityField.val(''),
+//
+//     // close modal
+//     $modal.modal('hide'),
+//
+//     // update the correct fighter to show the new event
+//     $.get('/api/fighters/' + fighterId, function(data) {
+//       // remove the current instance of the fighter from the page
+//       $('[data-fighter-id=' + fighterId + ']').remove();
+//       // re-render it with the new fighter data (including events)
+//       renderFighter(data);
+//   }).error(function(err) {
+//     console.log('post to /api/fighters/:fighterId/events resulted in error', err);
+// });
+// });
 
-    // close modal
-    $modal.modal('hide');
-    // update the correct fighter to show the new event
-    $.get('/api/fighters/' + fighterId, function(data) {
-      // remove the current instance of the fighter from the page
-      $('[data-fighter-id=' + fighterId + ']').remove();
-      // re-render it with the new fighter data (including events)
-      renderFighter(data);
-    });
-  }).error(function(err) {
-    console.log('post to /api/fighters/:fighterId/events resulted in error', err);
-});
+// failed attempt to use external api to populate the fighters
+//   $.get('http://ufc-data-api.ufc.com/api/v3/iphone/fighters', function(fighters) {
+//     fighters.forEach(function(fighter) {
+//       renderFighter(fighter);
+//     });
+//   });
+// });
+
+// //The below renders the entire fighter list on index.html

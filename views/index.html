@@ -86,7 +86,6 @@
                 <!-- begin fighter internal row -->
                   <div class='row'>
                     <div class="col-md-3 col-xs-12 thumbnail fighter-art">
-                      <img src="" alt="fighter image">
                     </div>
 
                     <div class="col-md-10-offset-1 col-sm-10 col-xs-10">
@@ -109,7 +108,7 @@
 
                         <li class="list-group-item">
                           <h4 class="inline-header">Events:</h4>
-                          <span>&ndash; {{#each events}} ({{place}}) {{date}} &ndash;  {{/each}}</span>
+                          <span class="event">{{event}}</span>
                         </li>
 
                       </ul>
@@ -164,6 +163,7 @@
                   <input id="date" name="date" type="text" placeholder="July 26, 2014" class="form-control input-md">
                 </div>
               </div>
+              
               <!-- Text input-->
               <div class="form-group">
                 <label class="col-md-4 control-label" for="arena">Arena Name</label>
@@ -184,7 +184,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="safeMatch">Make the Match</button>
+            <button type="button" class="btn btn-primary" id="saveMatch">Make the Match</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

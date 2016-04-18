@@ -23,7 +23,7 @@ var fighterSchema = new Schema({
     },
   division: [String],
   rookieYear: String,
-  nextFight: String,
+  nextFight: [Event.schema],
   moniker: String,
 });
 
