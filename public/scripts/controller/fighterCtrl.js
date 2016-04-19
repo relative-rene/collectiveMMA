@@ -1,3 +1,14 @@
+$(document).ready(function() {
+  $('#fighters').on('click', '.delete-fighter', handleDeleteFighterClick);
+  $('#fighters').on('click', '.edit-fighter', handleFighterEditClick);
+
+
+    $.get('/api/fighters', function(fighters) {
+      fighters.forEach(function(fight) {
+        renderFighter(fight);
+      });
+    });
+});
 function renderFighter(fighter) {
   console.log('rendering fighter', fighter);
   var fighterHtml = $('#fighter-template').html();

@@ -1,3 +1,30 @@
+$(document).ready(function() {
+  //index.html fighters
+  $('#fighters').on('click', '.add-event', handleAddEventClick);
+  //button hides on click
+  $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
+  //Make the match
+  $('#saveMatch').on('click', handleNewEventSubmit);
+  $('#fighters').on('click', '.edit-events', handleEditEventsClick);
+
+  $('#eventBuilder form').on('submit',function(event){
+    event.preventDefault();
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/events', formData, function(event) {
+      console.log('event after POST', event);
+      renderEvent(event);
+    });
+    $(this).trigger('reset');
+  });
+
+  //The below renders all Upcoming Events on event.html
+  $.get('/api/events', function(matches)  {
+    matches.forEach(function(match) {
+      renderEvent(match);
+    });
+  });
+});
 function renderEvent(match) {
   console.log('rendering event', match);
   var eventHtml = $('#event-template').html();
@@ -48,7 +75,6 @@ console.log("formData: "+ formData + 'Date: '+ $dateField, 'Opponent: '+ $oppone
   $('#date').val('');
   $('#eventModal').modal('hide');
 
-
 }
 
 function handleEditEventsClick(e) {
@@ -64,18 +90,18 @@ function handleEditEventsClick(e) {
 
 
 
-function createnewEvent(sent) {
-  sent.preventDefault();
-  var formData = $(this).serialize();
-  console.log('formData', formData);
-  $.ajax({
-    url:'api/events',
-    method:"POST",
-    data:formData,
-    success: renderEvents(match),
-      error: function(err){
-        console.log('mistake made on event $.ajax call', err);
-      }
-  });
-  $(this).trigger('reset');
-}
+// function createnewEvent(sent) {
+//   sent.preventDefault();
+//   var formData = $(this).serialize();
+//   console.log('formData', formData);
+//   $.ajax({
+//     url:'api/events',
+//     method:"POST",
+//     data:formData,
+//     success: renderEvents(match),
+//       error: function(err){
+//         console.log('mistake made on event $.ajax call', err);
+//       }
+//   });
+//   $(this).trigger('reset');
+// }

@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+});
 $('#Submit-total').on('click',function(){
     var fighter1Total, fighter2Total;
     var f1round1 = parseInt($('#F1R1').html());
