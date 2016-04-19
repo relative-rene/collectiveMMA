@@ -40,6 +40,7 @@ function handleSaveChangesClick(event){
   var data = {
     birthName: $fighterRow.find('.edit-birthName').val(),
     familyName: $fighterRow.find('.edit-familyName').val(),
+
   };
     console.log('PUTing data for fighter', fighterId, 'with data', data);
 
@@ -49,6 +50,10 @@ function handleSaveChangesClick(event){
       data: data,
       success: handleFighterEditClick
     });
+    // show the save changes button
+    $fighterRow.find('.save-fighter').toggleClass('hidden');
+    // hide the edit button
+    $fighterRow.find('.edit-fighter').toggleClass('hidden');
 }
 
 
