@@ -38,12 +38,14 @@
                 <li><a href="prediction">Pick A Fight </a></li>
                 <li><a href="scoreCard">Score A Fight</a></li>
               </ul>
+
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Fighter Search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
+
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
@@ -72,7 +74,7 @@
 
 
 
-      <!-- Create fighters! -->
+      <!-- edit fighters! -->
       <div id='fighters'>
         <script id='fighter-template' type='text/x-handlebars-template'>
           <!-- one fighter -->
@@ -138,79 +140,59 @@
 
     <!-- begin addFight modal, wont be visible until you click add fight-->
     <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Match Maker</h4>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Event</h4>
+      </div>
+      <div class="modal-body">
+
+        <fieldset class='form-horizontal'>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="date">Date</label>
+            <div class="col-md-4">
+              <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
           </div>
-          <div class="modal-body">
 
-            <fieldset class='form-horizontal'>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="opponent">Opponent</label>
-                <div class="col-md-4">
-                  <input id="opponent" name="opponent" type="text" placeholder="Select a fighter" class="form-control input-md" required="">
-                </div>
-              </div>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="date">Date</label>
-                <div class="col-md-4">
-                  <input id="date" name="date" type="text" placeholder="July 26, 2014" class="form-control input-md">
-                </div>
-              </div>
-              
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="arena">Arena Name</label>
-                <div class="col-md-4">
-                  <input id="arena" name="arena" type="text" placeholder="SAP Center " class="form-control input-md">
-                </div>
-              </div>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="city">The City And State</label>
-                <div class="col-md-4">
-                  <input id="city" name="city" type="text" placeholder="San Jose, CA" class="form-control input-md">
-                </div>
-              </div>
-            </fieldset>
-
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="opponent">Opponent</label>
+            <div class="col-md-4">
+              <input id="opponent" name="opponent" type="text" placeholder="" class="form-control input-md">
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveMatch">Make the Match</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </fieldset>
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="saveEvent">Set Match</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-    <!-- Edit Events Modal -->
-    <div class="modal fade bs-modal-lg" id="editEventsModal" tabindex="-1" role="dialog" aria-labelledby="editEventsModalTitle">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="editEventsModalTitle">Edit Event List</h4>
-          </div>
-          <div class="modal-body" id='editEventsModalBody'>
-            <p> REPLACE #editEventsModalBody </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id='editEventsModalSubmit'>Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  </body>
-
+<!-- Edit Events Modal -->
+<div class="modal fade bs-modal-lg" id="editEventsModal" tabindex="-1" role="dialog" aria-labelledby="editEventsModalTitle">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="editEventsModalTitle">Edit Event List</h4>
+  </div>
+  <div class="modal-body" id='editEventsModalBody'>
+    <p> REPLACE #editEventsModalBody </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" id='editEventsModalSubmit'>Save changes</button>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
     <!-- template for editing / deleting a event -->
@@ -221,10 +203,10 @@
       -->
       <form class="form-inline" id="{{_id}}" data-fighter-id="{{../fighterId}}" >
         <div class="form-group">
-          <input type="text" class="form-control event-placeArena" value="{{placeArena}}">
+        <input type="text" class="form-control event-placeArena" value="{{birthName}}">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control event-name" value="{{name}}">
+          <input type="text" class="form-control event-name" value="{{familyName}}">
         </div>
         <div class="form-group">
           <button class="btn btn-danger" data-event-id="{{_id}}">x</button>

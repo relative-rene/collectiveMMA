@@ -52,15 +52,15 @@ function renderFighter(fighter) {
 // when the add event button is clicked, display the modal
 function handleAddEventClick(e) {
   console.log('add-event clicked!');
-  var currentEventId = $(this).closest('.fighter').data('fighter-id'); // "5665ff1678209c64e51b4e7b"
-  console.log('id',currentEventId);
-  $('#eventModal').data('fighter-id', currentEventId);
+  var currentFighterId = $(this).closest('.fighter').data('fighter-id'); // "5665ff1678209c64e51b4e7b"
+  console.log('id',currentFighterId);
+  $('#eventModal').data('fighter-id', currentFighterId);
   $('#eventModal').modal();  // display the modal!
 }
 
 function handleNewEventSubmit(event) {
   event.preventDefault();
-  var $modal = $('#saveMatch');
+  var $modal = $('#saveEvent');
   var $opponentField = $modal.find('#opponent');
   var $dateField = $modal.find('#date');
   var $arenaField = $modal.find('#arena');
@@ -69,6 +69,7 @@ function handleNewEventSubmit(event) {
   // get data from modal fields
   // note the server expects the keys to be the id so we use those.
   var dataToPost = {
+
     date:$dateField.val(),
     fights:$opponentField.val(),
     arena:$arenaField.val(),
@@ -76,7 +77,8 @@ function handleNewEventSubmit(event) {
   };
 console.log(dataToPost);
   var fighterId = $modal.data('fighter-id');
-  console.log('retrieved eventName:', eventName, ' and placeArena:', placeArena, ' for fighter w/ id: ', fighterId);
+  console.log('Date:',$dateField, 'Opponent:'+$opponentField, 'Arena:' + $arenaField, 'City:'+ $cityField, ' for fighter w/ id: '+ fighterId);
+
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
   $.post(eventPostToServerUrl, dataToPost, function(data) {
@@ -144,9 +146,8 @@ function handleSaveChangesClick(event){
   var $fighterRow = $('[data-fighter-id='+ fighterId + ']');
   //this variable is capturing the value entered in the edit input
   var data = {
-    birthName: $fighterRow.find('.edit-fighter').val(),
-    familyName: $fighterRow.find('.edit-fighter').val(),
-    rookieYear: $fighterRow.find('.edit-fighter').val()
+    birthName: $fighterRow.find('.edit-birthName').val(),
+    familyName: $fighterRow.find('.edit-familyName').val(),
   };
     console.log('PUTing data for fighter', fighterId, 'with data', data);
 
