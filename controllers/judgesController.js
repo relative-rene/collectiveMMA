@@ -14,9 +14,9 @@ db.Judge.find({}, function(err, allJudges){
 
 function create(req, res) {
 console.log('body',req.body);
-var newSong = req.body;
+var newjudge = req.body;
 //save and return the new Judge object
-db.Judge.create( newSong, function saveNewJudge(err, savedNewJudge) {
+db.Judge.create( newjudge, function saveNewJudge(err, savedNewJudge) {
     //TODO:  run a check for err
     console.log("SUCCESFULLY SAVED A NEW Judge: " , savedNewJudge);
   res.json(savedNewJudge);

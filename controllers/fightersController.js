@@ -54,6 +54,7 @@ function update(req, res) {
     foundFighter.rookieYear = req.body.rookieYear;
     foundFighter.nextFight = req.body.nextFight;
     foundFighter.division= req.body.division;
+    foundFighter.opponent= req.body.opponent;
     foundFighter.save(function(err, savedFighter) {
       if(err) { console.log('saving altered fighter failed');
     }

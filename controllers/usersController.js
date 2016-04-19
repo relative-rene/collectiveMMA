@@ -13,9 +13,9 @@ db.User.find({}, function(err, allUsers){
 
 function create(req, res) {
 console.log('body',req.body);
-var newSong = req.body;
+var newuser = req.body;
 //save and return the new User object
-db.User.create( newSong, function saveNewUser(err, savedNewUser) {
+db.User.create( newuser, function saveNewUser(err, savedNewUser) {
     //TODO:  run a check for err
     console.log("SUCCESFULLY SAVED A NEW User: " , savedNewUser);
   res.json(savedNewUser);

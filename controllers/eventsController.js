@@ -22,7 +22,7 @@
       }
       var event = new db.Event(req.body);
       fighter.events.push(event);
-      album.save(function(err, savedFighter) {
+      fighter.save(function(err, savedFighter) {
         if (err) {
           console.log('error', err);
         }

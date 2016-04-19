@@ -7,7 +7,7 @@ var eventSchema = new Schema({
   arena:String,
   date:String,
   city:String,
-  Opponent:[Fighter.schema]
+  opponent:[String]
 });
 
 module.exports = mongoose.model('Event', eventSchema);
