@@ -52,48 +52,31 @@ function renderFighter(fighter) {
 // when the add event button is clicked, display the modal
 function handleAddEventClick(e) {
   console.log('add-event clicked!');
-  var currentFighterId = $(this).closest('.fighter').data('fighter-id'); // "5665ff1678209c64e51b4e7b"
-  console.log('id',currentFighterId);
-  $('#eventModal').data('fighter-id', currentFighterId);
+  var $currentFighterId = $(this).closest('.fighter').data('fighter-id'); // "5665ff1678209c64e51b4e7b"
+  console.log('id:',$currentFighterId,'$(this):',this);
+  $('#eventModal').data('fighter-id', $currentFighterId);
   $('#eventModal').modal();  // display the modal!
 }
 
 function handleNewEventSubmit(event) {
-  event.preventDefault();
-  var $modal = $('#saveEvent');
-  var $opponentField = $modal.find('#opponent');
-  var $dateField = $modal.find('#date');
-  var $arenaField = $modal.find('#arena');
-  var $cityField = $modal.find('#city');
+  var $fighterId = $('#eventModal').data('fighter-id');
+  var $opponent = $('#opponent').val();
+  var $date  = $('#date').val();
 
-  // get data from modal fields
-  // note the server expects the keys to be the id so we use those.
-  var dataToPost = {
-
-    date:$dateField.val(),
-    fights:$opponentField.val(),
-    arena:$arenaField.val(),
-    city:$cityField.val(),
+  var formData = {
+    opponent: $opponent,
+    date: $date,
   };
-console.log(dataToPost);
-  var fighterId = $modal.data('fighter-id');
-  console.log('Date:',$dateField, 'Opponent:'+$opponentField, 'Arena:' + $arenaField, 'City:'+ $cityField, ' for fighter w/ id: '+ fighterId);
+
+console.log("formData: "+ formData + 'Date: '+ $dateField, 'Opponent: '+ $opponent +' for fighter w/ id: '+ fighterId);
 
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
-  $.post(eventPostToServerUrl, dataToPost, function(data) {
-    console.log('received data from post to /events:', data);
-    // clear form
+  $.post(eventPostToServerUrl, formData, function(event) {
+    console.log('received data from post to /event:', event);
 
-    $dateField.val('');
-    $opponentField.val('');
-    $arenaField.val('');
-    $cityField.val('');
-
-    // close modal
-    $modal.modal('hide');
     // update the correct fighter to show the new event
-    $.get('/api/fighters/' + fighterId, function(data) {
+    $.get('/api/fighters/' + fighterId, function(fighter) {
       // remove the current instance of the fighter from the page
       $('[data-fighter-id=' + fighterId + ']').remove();
       // re-render it with the new fighter data (including events)
@@ -102,6 +85,11 @@ console.log(dataToPost);
   }).error(function(err) {
     console.log('post to /api/fighters/:fighterId/events resulted in error', err);
   });
+  $('#opponent').val('');
+  $('#date').val('');
+  $('#eventModal').modal('hide');
+
+
 }
 
 function handleEditEventsClick(e) {

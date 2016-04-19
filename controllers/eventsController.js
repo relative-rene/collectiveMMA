@@ -16,17 +16,19 @@
 
   function create(req, res) {
     console.log('body', req.body);
-    var fight = req.body.fights.split(',').map(function(item) {
-      return item.trim();
-    });
-    req.body.fight = fight;
-
-    db.Event.create(req.body, function(err, event) {
-      if (err) {
-        console.log('error', err);
+    db.Fighter.findOne({_id:req.params.fighterId}, function (err, fighter)  {
+      if(err) {
+        console.log('error',err);
       }
-        console.log(event);
-      res.json(event);
+      var event = new db.Event(req.body);
+      fighter.events.push(event);
+      album.save(function(err, savedFighter) {
+        if (err) {
+          console.log('error', err);
+        }
+        console.log('fighter with new event saved:', savedFighter);
+        res.json(event);
+      });
     });
   }
 
