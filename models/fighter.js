@@ -18,7 +18,7 @@ var fighterSchema = new Schema({
   moniker: String,
   win: String,
   loss: String,
-  draw: String
+  draw: String,
 });
 
 module.exports = mongoose.model('Fighter', fighterSchema);
