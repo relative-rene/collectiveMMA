@@ -14,7 +14,6 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <!-- APPLICATION SCRIPTS -->
   <script src="scripts/app.js"></script>
-  <script src="scripts/controller/fighterCtrl.js"></script>
   <script src="scripts/controller/eventCtrl.js"></script>
 </head>
 <body>
@@ -161,7 +160,7 @@
 
                         <li class="list-group-item">
                           <h4 class="inline-header">Events:</h4>
-                          <span>&ndash; {{#each events}} ({{place}}) {{date}} &ndash;  {{/each}}</span>
+                          <span>&ndash; {{#each events}} ({{city}}) {{date}} &ndash;  {{/each}}</span>
                         </li>
 
                       </ul>

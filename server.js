@@ -53,11 +53,13 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-app.get('/index', function (req, res) {
-  res.sendFile('views/index.html' , { root : __dirname});
-
+// app.get('/index', function (req, res) {
+//   res.sendFile('views/index.html' , { root : __dirname});
+//
+// });
+app.get('/index', function(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
 });
-
 app.get('/fighter', function (req, res) {
   res.sendFile(__dirname + '/views/fighter.html');
 });

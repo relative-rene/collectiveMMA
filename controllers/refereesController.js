@@ -12,10 +12,10 @@ db.Referee.find({}, function(err, allReferees){
 
 function create(req, res) {
   console.log('body', req.body);
-  var weight_class = req.body.weight_class.split(',').map(function(item) {
+  var nextFight = req.body.nextFight.split(',').map(function(item) {
     return item.trim();
   });
-  req.body.weight_class = weight_class;
+  req.body.nextFight = nextFight;
 
   db.Referee.create(req.body, function(err, referee) {
     if (err) {
@@ -53,7 +53,7 @@ function update(req, res) {
     foundReferee.last_name = req.body.last_name;
     foundReferee.rookieYear = req.body.rookieYear;
     foundReferee.nextFight = req.body.nextFight;
-    foundReferee.weight_class= req.body.weight_class;
+    foundReferee.nextFight= req.body.nextFight;
     foundReferee.save(function(err, savedReferee) {
       if(err) { console.log('saving altered referee failed');
     }

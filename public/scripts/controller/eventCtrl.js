@@ -4,7 +4,7 @@ $(document).ready(function() {
   //button hides on click
   $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
   //Make the match
-  $('#saveMatch').on('click', handleNewEventSubmit);
+  $('#saveEvent').on('click', handleNewEventSubmit);
   $('#fighters').on('click', '.edit-events', handleEditEventsClick);
 
   $('#eventBuilder form').on('submit',function(event){
@@ -54,7 +54,7 @@ function handleNewEventSubmit(event) {
     date: $date,
   };
 
-console.log("formData: "+ formData + 'Date: '+ $dateField, 'Opponent: '+ $opponent +' for fighter w/ id: '+ fighterId);
+console.log("formData: "+ formData + 'Date: '+ $date+ 'Opponent: '+ $opponent +' for fighter w/ id: '+ fighterId);
 
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
@@ -88,6 +88,31 @@ function handleEditEventsClick(e) {
 
 }
 
+
+function handleSaveChangesClick(event){
+  //when created mongoose generates an id this variable stores that random number
+  var fighterId = $(this).closest('.fighter').data('fighter-id');
+  //this vaiable assigns the fighterId to generated id to data-fighter-id atttribute
+  var $fighterRow = $('[data-fighter-id='+ fighterId + ']');
+  //this variable is capturing the value entered in the edit input
+  var data = {
+    birthName: $fighterRow.find('.edit-birthName').val(),
+    familyName: $fighterRow.find('.edit-familyName').val(),
+
+  };
+    console.log('PUTing data for fighter', fighterId, 'with data', data);
+
+    $.ajax({
+      method: 'PUT',
+      url: '/api/events/' + fighterId,
+      data: data,
+      success: handleFighterEditClick
+    });
+    // show the save changes button
+    $fighterRow.find('.save-fighter').toggleClass('hidden');
+    // hide the edit button
+    $fighterRow.find('.edit-fighter').toggleClass('hidden');
+}
 
 
 // function createnewEvent(sent) {
