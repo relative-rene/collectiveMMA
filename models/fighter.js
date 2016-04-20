@@ -12,7 +12,7 @@ var fighterSchema = new Schema({
     type: String,
     required: true
     },
-  division: [String],
+  division: String,
   rookieYear: String,
   nextFight: [String],
   moniker: String,

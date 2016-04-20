@@ -151,24 +151,25 @@ function handleAddEventClick(e) {
 function handleNewEventSubmit(e) {
   e.preventDefault();
   var $modal = $('#eventModal');
-  var $eventNameField = $modal.find('#eventName');
-  var $trackNumberField = $modal.find('#trackNumber');
+  var $date = $modal.find('#date');
+  var $opponent = $modal.find('#opponent');
 
   // get data from modal fields
-  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+  // note the server expects the keys to be 'name', 'opponent' so we use those.
   var dataToPost = {
-    name: $eventNameField.val(),
-    trackNumber: $trackNumberField.val()
+    name: $date.val(),
+    opponent: $opponent.val()
   };
   var fighterId = $modal.data('fighterId');
-  console.log('retrieved eventName:', eventName, ' and trackNumber:', trackNumber, ' for fighter w/ id: ', fighterId);
+  console.log('retrieved date:', date, ' and opponent:', opponent, ' for fighter w/ id: ', fighterId);
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
+
   $.post(eventPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /events:', data);
     // clear form
-    $eventNameField.val('');
-    $trackNumberField.val('');
+    $date.val('');
+    $opponent.val('');
 
     // close modal
     $modal.modal('hide');
