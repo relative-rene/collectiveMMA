@@ -6,7 +6,7 @@
 //   //Make the match
 //   $('#saveEvent').on('click', handleNewEventSubmit);
 //   $('#fighters').on('click', '.edit-events', handleEditEventsClick);
-// 
+//
 //   $('#eventBuilder form').on('submit',function(event){
 //     event.preventDefault();
 //     var formData = $(this).serialize();

@@ -3,13 +3,14 @@
 $(document).ready(function() {
   console.log('app.js loaded!');
   //working functions
+
   $.get('/api/fighters').success(function (fighters) {
     fighters.forEach(function(fighter) {
       renderFighter(fighter);
     });
   });
 
-
+//event listener
   function handleDeleteFighterClick(e) {
     var fighterId = $(this).parents('.fighter').data('fighter-id');
     console.log('someone wants to delete fighter id=' + fighterId );
@@ -20,10 +21,18 @@ $(document).ready(function() {
     });
   }
 
+  // callback after DELETE /api/fighters/:id
+  function handleDeleteFighterSuccess(data) {
+    var deletedFighterId = data._id;
+    console.log('removing the following fighter from the page:', deletedFighterId);
+    $('div[data-fighter-id=' + deletedFighterId + ']').remove();
+  }
+
 
 //working listeners
   $('#fighters').on('click', '.delete-fighter', handleDeleteFighterClick);
   $('#fighters').on('click', '.edit-fighter', handleFighterEditClick);
+  $('#fighters').on('click', '.add-event', handleAddEventClick);
 
 
   $('#fighterBuilder-form form').on('submit', function(e) {
@@ -38,7 +47,6 @@ $(document).ready(function() {
   });
 
   // catch and handle the click on an add event button
-  $('#fighters').on('click', '.add-event', handleAddEventClick);
 
   // save event modal save button
   $('#saveEvent').on('click', handleNewEventSubmit);
@@ -121,12 +129,6 @@ function handleFighterUpdatedResponse(data) {
 }
 
 
-// callback after DELETE /api/fighters/:id
-function handleDeleteFighterSuccess(data) {
-  var deletedFighterId = data._id;
-  console.log('removing the following fighter from the page:', deletedFighterId);
-  $('div[data-fighter-id=' + deletedFighterId + ']').remove();
-}
 
 
 // this function takes a single fighter and renders it to the page
@@ -156,7 +158,7 @@ function handleNewEventSubmit(e) {
 
   // get data from modal fields
   // note the server expects the keys to be 'name', 'opponent' so we use those.
-  var dataToPost = {
+  var formPost = {
     name: $date.val(),
     opponent: $opponent.val()
   };
@@ -165,7 +167,7 @@ function handleNewEventSubmit(e) {
   // POST to SERVER
   var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
 
-  $.post(eventPostToServerUrl, dataToPost, function(data) {
+  $.post(eventPostToServerUrl, formPost, function(data) {
     console.log('received data from post to /events:', data);
     // clear form
     $date.val('');
