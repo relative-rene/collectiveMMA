@@ -178,8 +178,8 @@
 
 
                     <li class="list-group-item">
-                      <h4 class="inline-header">Events:</h4>
-                      <span class="event">{{event}}</span>
+                      <h4 class="inline-header">Next Fight:</h4>
+                      <span class="nextFight"> &ndash;{{#each event}} {{opponent}} {{date}}&ndash;{{/each}}</span>
                     </li>
 
                   </ul>
@@ -193,6 +193,9 @@
                 </div>
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-primary edit-fighter">Edit Fighter</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-primary edit-event">Edit Event</button>
                 </div>
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-primary add-event">Add Event</button>
@@ -254,10 +257,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="editEventsModalTitle">Edit Event List</h4>
+          <h4 class="modal-title" id="editEventsModalTitle">Fight Substitute</h4>
         </div>
         <div class="modal-body" id='editEventsModalBody'>
-          <p> REPLACE #editEventsModalBody </p>
+          <input id="edit-nextFight" name="edit-nextFight" type="text" placeholder="Who is his next opponent" class="form-control input-md">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
