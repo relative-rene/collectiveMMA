@@ -19,4 +19,4 @@ var refereeSchema = new Schema({
 });
 
 var Referee = mongoose.model("Referee", refereeSchema);
-module.export = Referee;
+module.exports = Referee;

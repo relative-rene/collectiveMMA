@@ -18,8 +18,7 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controller/fighterCtrl.js"></script>
-    <script src="scripts/controller/eventCtrl.js"></script>
+
   </head>
   <body>
     <nav class="navbar navbar-primary">
@@ -49,7 +48,7 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Create <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li class='navCreate'><a href="fighter">Fighter</a></li>
                     <li><a href="judge">Judge</a></li>
@@ -274,9 +273,7 @@
   <!-- template for editing / deleting a event -->
   <script id='event-edit-template' type='text/x-handlebars-template'>
     {{#each events}}
-    <!-- confused by ../fighterId ?  See:
-    http://stackoverflow.com/questions/12297959/access-properties-of-the-parent-with-a-handlebars-each-loop#12297980
-  -->
+
   <form class="form-inline" id="{{_id}}" data-fighter-id="{{../fighterId}}" >
     <div class="form-group">
       <input type="text" class="form-control event-placeArena" value="{{birthName}}">
