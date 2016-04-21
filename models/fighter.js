@@ -11,7 +11,7 @@ var fighterSchema = new Schema({
   birthName: {
     type: String,
     required: true
-    },
+  },
   division: String,
   rookieYear: String,
   nextFight: [Event.schema],

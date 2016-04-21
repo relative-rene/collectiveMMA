@@ -96,7 +96,7 @@ app.put('/api/events/:eventId', controllers.events.update);
 app.get('/api/fighters', controllers.fighters.index);
 app.get('/api/fighters/:fighterId', controllers.fighters.show);
 app.post('/api/fighters', controllers.fighters.create);
-app.post('/api/fighters/:fighterId/events', controllers.fighters.create);//may have to adjust this
+app.post('/api/fighters/:fighterId/events', controllers.fightersEvents.create);//may have to adjust this
 app.delete('/api/fighters/:fighterId', controllers.fighters.destroy);
 app.put('/api/fighters/:fighterId', controllers.fighters.update);
 // app.post('/api/fighters/:fighterId/events', controllers.fightersEvents.create);

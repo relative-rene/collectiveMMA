@@ -13,7 +13,7 @@ function handleFighterEditClick(e) {
   // get the fighter name and replace its field with an input element
   var birthName = $fighterRow.find('span.edit-birthName').text();
   $fighterRow.find('span.birthName').html('<input class="edit-birthName" value="' + birthName + '"></input>');
-
+console.log('birthName:',birthName);
   // get the family name and replace its field with an input element
   var familyName = $fighterRow.find('span.edit-familyName').text();
   $fighterRow.find('span.familyName').html('<input class="edit-familyName" value="' + familyName + '"></input>');
@@ -29,7 +29,7 @@ function handleSaveChangesClick(e) {
   var $fighterRow = $('[data-fighter-id=' + fighterId + ']');
 
   var data = {
-    name: $fighterRow.find('.edit-birthName').val(),
+    birthName: $fighterRow.find('.edit-birthName').val(),
     familyName: $fighterRow.find('.edit-familyName').val(),
     moniker: $fighterRow.find('.edit-fighterMoniker').val()
   };
@@ -117,6 +117,7 @@ function handleEditEventsClick(e) {
     var $modal = $('#eventModal');
     var $date = $modal.find('#date');
     var $opponent = $modal.find('#opponent');
+    console.log($modal,$date,$opponent);
 
     // get data from modal fields
     // note the server expects the keys to be 'name', 'opponent' so we use those.
@@ -124,12 +125,13 @@ function handleEditEventsClick(e) {
       name: $date.val(),
       opponent: $opponent.val()
     };
+    console.log(formPost);
     var fighterId = $modal.data('fighterId');
     console.log('retrieved date:', date, ' and opponent:', opponent, ' for fighter w/ id: ', fighterId);
     // POST to SERVER
-    var eventPostToServerUrl = '/api/fighters/'+ fighterId + '/events';
-
-    $.post(eventPostToServerUrl, formPost, function(data) {
+    var eventPostToServeUrl = '/api/fighters/'+ fighterId + '/events';
+console.log(eventPostToServeUrl);
+    $.post(eventPostToServeUrl, formPost, function(data) {
       console.log('received data from post to /events:', data);
       // clear form
       $date.val('');
@@ -143,6 +145,7 @@ function handleEditEventsClick(e) {
         $('[data-fighter-id=' + fighterId + ']').remove();
         // re-render it with the new fighter data (including events)
         renderFighter(data);
+        console.log(data);
       });
     }).error(function(err) {
       console.log('post to /api/fighters/:fighterId/events resulted in error', err);
@@ -176,7 +179,7 @@ $(document).ready(function() {
   $('#fighters').on('click', '.edit-fighter', handleFighterEditClick);
   $('#fighters').on('click', '.add-event', handleAddEventClick);
   $('#fighters').on('click', '.save-fighter', handleSaveChangesClick);
-  $('#saveEvent').on('click',handleNewEventSubmit);
+  $('#saveEvent').on('click', handleNewEventSubmit);
   $('#fighters').on('click', '.edit-event', handleEditEventsClick);
 
 

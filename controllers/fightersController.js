@@ -56,7 +56,7 @@ function update(req, res) {
     foundFighter.division= req.body.division;
     foundFighter.opponent= req.body.opponent;
     foundFighter.save(function(err, savedFighter) {
-      if(err) { console.log('saving altered fighter failed');
+      if(err) { console.log('saving altered fighter failed',err);
     }
     res.json(savedFighter);
   });
