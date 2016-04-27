@@ -113,7 +113,7 @@ function handleEditEventsClick(e) {
 
   // when the event modal submit button is clicked:
   function handleNewEventSubmit(e) {
-    e.preventDefault();
+
     var $modal = $('#eventModal');
     var $date = $modal.find('#date');
     var $opponent = $modal.find('#opponent');
@@ -131,8 +131,14 @@ function handleEditEventsClick(e) {
     // POST to SERVER
     var eventPostToServeUrl = '/api/fighters/'+ fighterId + '/events';
 console.log(eventPostToServeUrl);
-    $.post(eventPostToServeUrl, formPost, function(data) {
-      console.log('received data from post to /events:', data);
+    $.ajax({
+      url:eventPostToServeUrl,
+      method:'PUT',
+      data:formPost,
+      success: function(data) {
+      console.log('received data from put to /events:', data);
+    }
+  });
       // clear form
       $date.val('');
       $opponent.val('');
@@ -146,8 +152,8 @@ console.log(eventPostToServeUrl);
         // re-render it with the new fighter data (including events)
         renderFighter(data);
         console.log(data);
-      });
-    }).error(function(err) {
+      })
+    .error(function(err) {
       console.log('post to /api/fighters/:fighterId/events resulted in error', err);
     });
   }
