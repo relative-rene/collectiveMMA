@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "postinstall": "bower install"
   },
   "repository": {
@@ -22,5 +23,8 @@
     "bower": "^1.7.9",
     "express": "^4.13.3",
     "mongoose": "^4.2.9"
+  },
+  "engines": {
+  "node": "6.2.2"
   }
 }
