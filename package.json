@@ -2,29 +2,28 @@
   "name": "project-01",
   "version": "1.0.0",
   "description": "collectiveMMA",
-  "main": "server.js",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sf-wdi-27-28/project-01.git"
+    "url": "git+https://github.com/relative-rene/project-01"
   },
-  "author": "",
+  "author": "relative-rene",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sf-wdi-27-28/project-01/issues"
+    "url": "https://github.com/relative-rene/project-01/issues"
   },
-  "homepage": "https://github.com/sf-wdi-27-28/project-01#readme",
+  "homepage": "https://github.com/relative-rene/project-01#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "^1.7.9",
-    "express": "^4.13.3",
+    "express": "4.14.0",
     "mongoose": "^4.2.9"
   },
   "engines": {
-  "node": "6.2.2"
+    "node": "6.2.2"
   }
 }
