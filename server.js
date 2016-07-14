@@ -1,42 +1,20 @@
-// server.js
 // SERVER-SIDE JAVASCRIPT
 
 /////////////////////////////
 //  SETUP and CONFIGURATION
 /////////////////////////////
 
-var express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    controllers = require('./controllers'),
-
-    //  NEW ADDITIONS
-    cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static(__dirname + '/public'));
-
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
-// future authentication stuff
-// app.use(cookieParser());
-// app.use(session({
-//   secret: 'supersecretkey', // change this!
-//   resave: false,
-//   saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// Authentication and Authorization stuff step hoover craft
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+app.use('/vendor', express.static(__dirname + '/bower_components'));
+var controllers = require('./controllers');
 
 ////////////////////
 //  ROUTES
@@ -49,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // define a root route: localhost:3000/
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html' , { root : __dirname});
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 // app.get('/index', function (req, res) {

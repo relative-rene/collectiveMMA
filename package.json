@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,9 @@
   },
   "homepage": "https://github.com/sf-wdi-27-28/project-01#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.1",
-    "express": "^4.13.4",
-    "express-session": "^1.13.0",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0"
+    "body-parser": "^1.14.1",
+    "bower": "^1.7.9",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.9"
   }
 }
