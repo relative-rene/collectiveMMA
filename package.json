@@ -2,10 +2,9 @@
   "name": "project-01",
   "version": "1.0.0",
   "description": "collectiveMMA",
-  "main": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/relative-rene/project-01/issues"
   },
-  "homepage": "https://github.com/relative-rene/project-01#readme",
+  "homepage": "https://github.com/relative-rene/project-01",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "^1.7.9",
