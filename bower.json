@@ -1,7 +1,7 @@
 {
   "name": "project-01",
   "description": "collectiveMMA",
-  "main": "server.js",
+  "main": "node server.js",
   "authors": [
     "relative-rene"
   ],
