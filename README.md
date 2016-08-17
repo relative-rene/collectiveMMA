@@ -1,46 +1,33 @@
-Technologies Used:
-    express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
-Existing Features:
-Using the 10 point scoring system, user is able to score rounds for fighter 1 or fighter 2. Score is added and stored.
+# App Name
+User can CRUD fighters and view upcoming events
 
-Planned Features:
-1.I will use an external API on fight-matrix or ufc api to populate a            fighter page.  The user will be able to create or add fighter or select   fighter for fight.
+## Technologies Used
+- MongoDB
+- Mongoose
+- Express
+- Node.js
+- Body Parser
 
-2.I will create a seperate form in which the user will also be able to make a fight prediction for upcoming fights or fantasy fight.
+## Existing Features
+- Jumbotron displaying upcoming MMA Events
+- Fighter Archive
+- Score a Fight
 
-3.In the future the user will be able to log in and track individual scorecards or retrieve fight predictions.
+## Planned Features
+- Give client ability to create account
+- Rank fighters
+- Inputting Fighters individually Does not scale, refactor app to scrap or AJAX call an api
+- Give predictions on upcoming fights
+- Create a News outlet by scrapping the web for blogs
+- Add comment forum to debrief Events
+- Add ads
+
+* Upcoming Event Slides
+
+![collectivemma](https://cloud.githubusercontent.com/assets/12709735/17750311/a3e7dbda-6476-11e6-8e36-420f911f80cf.jpg)
 
 
-app.get('/api', function apiIndex(req,res) {
-  //TODO: Document all api Endpoints
-  res.json({
-    message: "Collective MMA api",
-    documentation_url:'investigate what documentation url is and update',
-    base_url: "https://github.com/relative-rene/project-01",// this may cause issues make sure the url is correct
-    endpoints: [
-  {method: "GET", path: "/api", description: "Describes all available endpoints"},
-  {method: "GET", path: "/api/fighters", description: "retrieves all fighters"},
-  {method: "GET", path: "/api/fighters/:id", description: "retrieves specific fighter"},
-  {method: "POST", path: "/api/fighters", description: "creating new fighter"},
-  {method: "DELETE", path: "/api/fighters/:id", description: "removing specific fighter"},
-  {method: "GET", path: "/api/scoreCards", description: "retrieve all scoreCards"},
-  {method: "GET", path: "/api/scoreCards/:id", description: "retrieve specific scoreCard"},
-  {method: "POST", path: "/api/scoreCards", description: "creating new scoreCard"},
-  {method: "DELETE", path: "/api/scoreCards/:id", description: "remove specific scoreCard"},
-]
-  });
-});  
+* Add Fighter form
 
-I am most proud of:
-$(".dropdown-menu li a").click(function(event) {
-    var $linkText= $(this).text();
-    $(this).parents(".btn-group").find('.selection').text($linkText);
-    event.preventDefault();
-});
+
+<img width="559" alt="collectivemma" src="https://cloud.githubusercontent.com/assets/12709735/17750312/a6d0ad04-6476-11e6-8308-6897a0576242.png">
