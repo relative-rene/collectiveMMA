@@ -1,18 +1,22 @@
 // SERVER-SIDE JAVASCRIPT
 
-/////////////////////////////
-//  SETUP and CONFIGURATION
-/////////////////////////////
+// MODULES  //////
 
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+// CONFIGURATION  /////
+
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static(__dirname + '/public'));
+
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
+
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 var controllers = require('./controllers');
 
