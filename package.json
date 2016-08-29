@@ -1,21 +1,21 @@
 {
-  "name": "project-01",
+  "name": "thescoreapp",
   "version": "1.0.0",
-  "description": "scoreApp",
+  "description": "User can CRUD fighters and score fights",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/relative-rene/project-01.git"
+    "url": "git+https://github.com/relative-rene/thescoreapp"
   },
   "author": "relative-rene",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/relative-rene/project-01/issues"
+    "url": "https://github.com/relative-rene/thescoreapp/issues"
   },
-  "homepage": "https://github.com/relative-rene/project-01",
+  "homepage": "https://github.com/relative-rene/thescoreapp",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "^1.7.9",

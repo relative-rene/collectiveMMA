@@ -1,12 +1,12 @@
 {
-  "name": "project-01",
-  "description": "scoreApp",
+  "name": "thescoreapp",
+  "description": "User can CRUD fighters and score fights",
   "main": "server.js",
   "authors": [
     "relative-rene"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/relative-rene/project-01",
+  "homepage": "https://github.com/relative-rene/thescoreapp",
   "private": true,
   "ignore": [
     "**/.*",

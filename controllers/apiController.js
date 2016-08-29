@@ -1,7 +1,7 @@
 function index(req, res) {
   res.json({
     documentation_url:'investigate what documentation url is and update',
-    base_url: "https://github.com/relative-rene/project-01",// this may cause issues make sure the url is correct
+    base_url: "https://github.com/relative-rene/thescoreapp",// this may cause issues make sure the url is correct
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/events", description: "retrieves all events"},

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/project-01");
+mongoose.connect("mongodb://localhost/thescoreapp");
 
 module.exports.Fighter = require('./fighter.js');
 module.exports.Judge = require('./judge.js');
