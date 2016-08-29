@@ -24,10 +24,10 @@ User can CRUD fighters and view upcoming events
 
 * Upcoming Event Slides
 
-![collectivemma](https://cloud.githubusercontent.com/assets/12709735/17750311/a3e7dbda-6476-11e6-8e36-420f911f80cf.jpg)
+![scoreApp](https://cloud.githubusercontent.com/assets/12709735/17750311/a3e7dbda-6476-11e6-8e36-420f911f80cf.jpg)
 
 
 * Add Fighter form
 
 
-<img width="559" alt="collectivemma" src="https://cloud.githubusercontent.com/assets/12709735/17750312/a6d0ad04-6476-11e6-8308-6897a0576242.png">
+<img width="559" alt="scoreApp" src="https://cloud.githubusercontent.com/assets/12709735/17750312/a6d0ad04-6476-11e6-8308-6897a0576242.png">
