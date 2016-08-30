@@ -1,4 +1,5 @@
-
+var mongoose = require('mongoose');
+var db = require('./models');
 var fighters = [
 {
 id: 1177,
