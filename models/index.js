@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var mongodUri = 'mongodb://heroku_w7pcd47r:c2stj3uatqdm1blh5g1dimeff0@ds019836.mlab.com:19836/heroku_w7pcd47r';
-mongoose.connect(mongodbUri);
+var MONGOLAB_GRAY_URI = 'mongodb://heroku_shtht34x:hip69ejvg0u13j5h0a7gvtec0h@ds019936.mlab.com:19936/heroku_shtht34x';
+mongoose.connect(MONGOLAB_GRAY_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback(){
