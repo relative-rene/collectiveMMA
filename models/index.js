@@ -1,6 +1,4 @@
 var mongoose = require("mongoose");
-mongoose.connect(MONGODB_URI ||
-                  "mongodb://localhost/thescoreapp");
 
 module.exports.Fighter = require('./fighter.js');
 module.exports.Judge = require('./judge.js');
