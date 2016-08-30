@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+
 var Event = require('./event');
 var Schema = mongoose.Schema;
 
