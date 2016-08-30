@@ -13,9 +13,9 @@
   "author": "relative-rene",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/relative-rene/thescoreapp/issues.git"
+    "url": "https://github.com/relative-rene/thescoreapp/issues"
   },
-  "homepage": "https://github.com/relative-rene/thescoreapp.git",
+  "homepage": "https://github.com/relative-rene/thescoreapp",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "^1.7.9",
