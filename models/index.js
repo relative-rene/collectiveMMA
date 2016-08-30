@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect( process.env.MONGODB_URI ||
+mongoose.connect(MONGODB_URI ||
                   "mongodb://localhost/thescoreapp");
 
 module.exports.Fighter = require('./fighter.js');
