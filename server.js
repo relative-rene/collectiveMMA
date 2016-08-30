@@ -16,9 +16,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
-var ejs = require('ejs');
-app.engine('html', ejs.renderFile);
-app.set('view engine', 'html');
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 var controllers = require('./controllers');
 
